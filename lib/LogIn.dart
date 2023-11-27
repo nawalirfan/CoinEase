@@ -1,10 +1,9 @@
 import 'package:coin_ease/OTP.dart';
+import 'package:coin_ease/SignUp.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-
-class LogIn extends StatefulWidget 
-{
+class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
 
   @override
@@ -19,11 +18,9 @@ class _LogInState extends State<LogIn> {
     return Scaffold(
       body: Container(
         color: const Color.fromARGB(255, 201, 200, 200),
-        child: SafeArea
-        (
+        child: SafeArea(
           child: Center(
-            child: ListView
-            (
+            child: ListView(
               shrinkWrap: true,
               children: [
                 Column(
@@ -43,32 +40,24 @@ class _LogInState extends State<LogIn> {
                     ),
                     const SizedBox(height: 20.0),
                     // Phone Number Extension and Phone Number in a Row
-                    Padding
-                    (
+                    Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Container
-                      (
-                        
-                        child: IntlPhoneField
-                        (
+                      child: Container(
+                        child: IntlPhoneField(
                           keyboardType: TextInputType.phone,
-                          decoration: InputDecoration
-                          (
+                          decoration: InputDecoration(
                             labelText: 'Phone Number',
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.3),
-                            border: OutlineInputBorder
-                            (
+                            border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: const BorderSide
-                                  (
-                                    color: Color.fromARGB(255, 3, 3, 3),
+                              borderSide: const BorderSide(
+                                color: Color.fromARGB(255, 3, 3, 3),
                               ),
                             ),
                           ),
                           initialCountryCode: 'PK',
-                          onChanged: (phone) 
-                          {
+                          onChanged: (phone) {
                             print(phone.completeNumber);
                           },
                         ),
@@ -80,7 +69,8 @@ class _LogInState extends State<LogIn> {
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: TextField(
                         obscureText: true,
-                        style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0)),
+                        style: const TextStyle(
+                            fontSize: 18, color: Color.fromARGB(255, 0, 0, 0)),
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.lock),
                           labelText: 'Password',
@@ -88,7 +78,8 @@ class _LogInState extends State<LogIn> {
                           fillColor: Colors.white.withOpacity(0.3),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
+                            borderSide: const BorderSide(
+                                color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         ),
                       ),
@@ -108,7 +99,8 @@ class _LogInState extends State<LogIn> {
                               borderRadius: BorderRadius.circular(25),
                             ),
                           ),
-                          child: const Text('Sign In', style: TextStyle(fontSize: 20)),
+                          child: const Text('Sign In',
+                              style: TextStyle(fontSize: 20)),
                         ),
                       ),
                     ),
@@ -120,11 +112,19 @@ class _LogInState extends State<LogIn> {
                           padding: EdgeInsets.only(left: 20.0),
                           child: Text(
                             "Don't have an account?",
-                            style: TextStyle(fontSize: 17, color: Color.fromARGB(255, 0, 0, 0)),
+                            style: TextStyle(
+                                fontSize: 17,
+                                color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUp()),
+                            );
+                          },
                           child: const Text(
                             'Sign Up',
                             style: TextStyle(fontSize: 17),
@@ -134,26 +134,19 @@ class _LogInState extends State<LogIn> {
                     ),
                     const SizedBox(height: 10.0),
                     // Forgot password
-                    Row
-                    (
-                      children: 
-                      [
-                        Padding
-                        (
+                    Row(
+                      children: [
+                        Padding(
                           padding: const EdgeInsets.only(left: 20.0),
-                          child: TextButton
-                          (
-                            onPressed: 
-                            ()
-                            { 
-                              Navigator.push
-                              (
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const OTP()),
-                              ); 
+                                MaterialPageRoute(
+                                    builder: (context) => const OTP()),
+                              );
                             },
-                            child: const Text
-                            (
+                            child: const Text(
                               'Forgot Password?',
                               style: TextStyle(fontSize: 17),
                             ),

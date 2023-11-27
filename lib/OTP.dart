@@ -59,11 +59,11 @@ class _OTPState extends State<OTP> {
                           borderRadius: BorderRadius.circular(25),
                         ),
                       ),
-                      child: const Text('Sign In', style: TextStyle(fontSize: 20)),
+                      child:
+                          const Text('Sign In', style: TextStyle(fontSize: 20)),
                     ),
                   ),
                 ),
-                Text('nimra nasrullah'),
               ],
             ),
           ),
@@ -72,4 +72,3 @@ class _OTPState extends State<OTP> {
     );
   }
 }
-
