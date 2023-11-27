@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "235674102487",
+    "project_id": "coinease-b2805",
+    "storage_bucket": "coinease-b2805.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235674102487:android:724a403fb097485debde92",
+        "android_client_info": {
+          "package_name": "com.example.coin_ease"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5iG8rzhjOOUnMKmhqjU7gn7Fg3zr0CqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

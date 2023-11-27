@@ -1,6 +1,10 @@
+import 'package:coin_ease/OTP.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-class LogIn extends StatefulWidget {
+
+
+class LogIn extends StatefulWidget 
+{
   const LogIn({Key? key}) : super(key: key);
 
   @override
@@ -15,9 +19,11 @@ class _LogInState extends State<LogIn> {
     return Scaffold(
       body: Container(
         color: const Color.fromARGB(255, 201, 200, 200),
-        child: SafeArea(
+        child: SafeArea
+        (
           child: Center(
-            child: ListView(
+            child: ListView
+            (
               shrinkWrap: true,
               children: [
                 Column(
@@ -128,13 +134,26 @@ class _LogInState extends State<LogIn> {
                     ),
                     const SizedBox(height: 10.0),
                     // Forgot password
-                    Row(
-                      children: [
-                        Padding(
+                    Row
+                    (
+                      children: 
+                      [
+                        Padding
+                        (
                           padding: const EdgeInsets.only(left: 20.0),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: const Text(
+                          child: TextButton
+                          (
+                            onPressed: 
+                            ()
+                            { 
+                              Navigator.push
+                              (
+                                context,
+                                MaterialPageRoute(builder: (context) => const OTP()),
+                              ); 
+                            },
+                            child: const Text
+                            (
                               'Forgot Password?',
                               style: TextStyle(fontSize: 17),
                             ),
