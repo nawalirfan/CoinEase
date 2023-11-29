@@ -1,12 +1,17 @@
 import 'package:coin_ease/LogIn.dart';
 import 'package:flutter/material.dart';
 
-class SignUp extends StatelessWidget {
+//screen 1
+class SignUp extends StatelessWidget 
+{
   const SignUp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) 
+  {
+    return Scaffold
+    (
+        //App bar
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -20,21 +25,31 @@ class SignUp extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 201, 200, 200),
           elevation: 0,
         ),
-        body: Container(
+        body: Container
+        (
           color: const Color.fromARGB(255, 201, 200, 200),
-          child: SafeArea(
-            child: Column(children: [
-              ListView(
+          child: SafeArea
+          (
+            child: Column(children: 
+            [
+              ListView
+              (
                 shrinkWrap: true,
-                children: [
-                  const SizedBox(
+                children: 
+                [
+                  const SizedBox
+                  (
                     height: 100,
                   ),
-                  Column(
+                  Column
+                  (
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Padding(
+                      children: 
+                      [
+                        const Padding
+                        (
+                          //sign up text
                           padding: EdgeInsets.only(left: 20.0),
                           child: Text(
                             'Sign Up',
@@ -46,6 +61,7 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 40.0),
+                        //full name text field
                         const Padding(
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: Text(
@@ -75,6 +91,7 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 15.0),
+                        //cnic number text field
                         const Padding(
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: Text(
@@ -104,6 +121,7 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 15.0),
+                        //date of issuance text field
                         const Padding(
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: Text(
@@ -133,6 +151,7 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 15.0),
+                        //father or husband name text field
                         const Padding(
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: Text(
@@ -162,6 +181,7 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 15.0),
+                        //mother name text field
                         const Padding(
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: Text(
@@ -190,14 +210,16 @@ class SignUp extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 150.0),
-                        SizedBox(
+                        const SizedBox(height: 100.0),
+                        SizedBox
+                        (
                           width: 420,
                           height: 60,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: ElevatedButton(
+                          child: Padding
+                          (
+                            padding:const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: ElevatedButton
+                            (
                               onPressed: () {
                                 Navigator.push(
                                   context,
@@ -205,16 +227,21 @@ class SignUp extends StatelessWidget {
                                       builder: (context) => const SignUp1()),
                                 );
                               },
-                              style: ElevatedButton.styleFrom(
+                              style: ElevatedButton.styleFrom
+                              (
                                 primary:
                                     const Color.fromARGB(255, 157, 128, 164),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(25),
                                 ),
                               ),
-                              child: Row(
-                                children: [
-                                  Expanded(
+                              //continue text and arrow
+                              child: const Row
+                              (
+                                children: 
+                                [
+                                  Expanded
+                                  (
                                     child: Center(
                                       child: Text('Continue',
                                           style: TextStyle(
@@ -240,20 +267,26 @@ class SignUp extends StatelessWidget {
   }
 }
 
-class SignUp1 extends StatefulWidget {
+//screen 2
+class SignUp1 extends StatefulWidget 
+{
   const SignUp1({Key? key}) : super(key: key);
 
   @override
   _SignUp1State createState() => _SignUp1State();
 }
 
-class _SignUp1State extends State<SignUp1> {
+class _SignUp1State extends State<SignUp1> 
+{
   bool obscurePassword = true;
   bool obscureConfirmPassword = true;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) 
+  {
+    return Scaffold
+    (
+      //app bar
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -267,21 +300,31 @@ class _SignUp1State extends State<SignUp1> {
         backgroundColor: const Color.fromARGB(255, 201, 200, 200),
         elevation: 0,
       ),
-      body: Container(
+      body: Container
+      (
         color: const Color.fromARGB(255, 201, 200, 200),
-        child: SafeArea(
-          child: Column(
-            children: [
-              ListView(
+        child: SafeArea
+        (
+          child: Column
+          (
+            children: 
+            [
+              ListView
+              (
                 shrinkWrap: true,
-                children: [
-                  SizedBox(
+                children: 
+                [
+                  const SizedBox
+                  (
                     height: 100,
                   ),
-                  Column(
+                  Column
+                  (
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: 
+                    [
+                      //sign up text
                       const Padding(
                         padding: EdgeInsets.only(left: 20.0),
                         child: Text(
@@ -294,6 +337,7 @@ class _SignUp1State extends State<SignUp1> {
                         ),
                       ),
                       const SizedBox(height: 40.0),
+                      //phone number text field
                       const Padding(
                         padding: EdgeInsets.only(left: 20, right: 20),
                         child: Text(
@@ -323,15 +367,20 @@ class _SignUp1State extends State<SignUp1> {
                         ),
                       ),
                       const SizedBox(height: 40.0),
+                      //nuild password text function
                       buildPasswordTextField('Password', obscurePassword),
                       const SizedBox(height: 40.0),
-                      buildPasswordTextField(
-                          'Confirm Password', obscureConfirmPassword),
-                      SizedBox(height: 250),
-                      SizedBox(
+                      //build confirm passowrd text function
+                      buildPasswordTextField('Confirm Password', obscureConfirmPassword),
+                      
+                      const SizedBox(height: 250),
+                      //sign up button
+                      SizedBox
+                      (
                         width: 420,
                         height: 60,
-                        child: Padding(
+                        child: Padding
+                        (
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: ElevatedButton(
                             onPressed: () {
@@ -364,10 +413,15 @@ class _SignUp1State extends State<SignUp1> {
     );
   }
 
-  Widget buildPasswordTextField(String labelText, bool obscureText) {
-    return Column(
+//password and confirm password
+  Widget buildPasswordTextField(String labelText, bool obscureText) 
+  {
+    return Column
+    (
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: 
+      [
+        //text password and confirm password
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Text(
@@ -379,6 +433,7 @@ class _SignUp1State extends State<SignUp1> {
             ),
           ),
         ),
+        //inside password and confirm password text field text
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: TextField(
@@ -396,7 +451,9 @@ class _SignUp1State extends State<SignUp1> {
                   color: Color.fromARGB(255, 0, 0, 0),
                 ),
               ),
-              suffixIcon: GestureDetector(
+              //eye icon 
+              suffixIcon: GestureDetector
+              (
                 onTap: () {
                   setState(() {
                     if (labelText == 'Password') {

@@ -3,35 +3,49 @@ import 'package:coin_ease/SignUp.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-class LogIn extends StatefulWidget {
+class LogIn extends StatefulWidget 
+{
   const LogIn({Key? key}) : super(key: key);
 
   @override
   State<LogIn> createState() => _LogInState();
 }
 
-class _LogInState extends State<LogIn> {
+class _LogInState extends State<LogIn> 
+{
   final TextEditingController phoneNumberController = TextEditingController();
-
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+  Widget build(BuildContext context) 
+  {
+    return Scaffold
+    (
+      body: Container
+      (
         color: const Color.fromARGB(255, 201, 200, 200),
-        child: SafeArea(
-          child: Center(
-            child: ListView(
+        child: SafeArea
+        (
+          child: Center
+          (
+            child: ListView
+            (
               shrinkWrap: true,
-              children: [
-                Column(
+              children: 
+              [
+                Column
+                (
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
+                  children: 
+                  [
+                    //log in text
+                    const Padding
+                    (
                       padding: EdgeInsets.only(top: 20.0, left: 20.0),
-                      child: Text(
+                      child: Text
+                      (
                         'Log In',
-                        style: TextStyle(
+                        style: TextStyle
+                        (
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 157, 128, 164),
@@ -39,93 +53,124 @@ class _LogInState extends State<LogIn> {
                       ),
                     ),
                     const SizedBox(height: 20.0),
-                    // Phone Number Extension and Phone Number in a Row
-                    Padding(
+                    // Phone Number Extension and Phone Number Text field
+                    Padding
+                    (
                       padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Container(
-                        child: IntlPhoneField(
+                      child: Container
+                      (
+                        child: IntlPhoneField
+                        (
                           keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
+                          decoration: InputDecoration
+                          (
                             labelText: 'Phone Number',
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.3),
-                            border: OutlineInputBorder(
+                            border: OutlineInputBorder
+                            (
                               borderRadius: BorderRadius.circular(10.0),
-                              borderSide: const BorderSide(
+                              borderSide: const BorderSide
+                              (
                                 color: Color.fromARGB(255, 3, 3, 3),
                               ),
                             ),
                           ),
                           initialCountryCode: 'PK',
-                          onChanged: (phone) {
-                            print(phone.completeNumber);
-                          },
+                          // onChanged: (phone) 
+                          // {
+                          //   print(phone.completeNumber);
+                          // },
                         ),
                       ),
                     ),
                     const SizedBox(height: 4.0),
-                    // Password + lock icon
-                    Padding(
+                    // Password text field + lock icon
+                    Padding
+                    (
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: TextField(
+                      child: TextField
+                      (
                         obscureText: true,
-                        style: const TextStyle(
-                            fontSize: 18, color: Color.fromARGB(255, 0, 0, 0)),
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.lock),
-                          labelText: 'Password',
-                          filled: true,
-                          fillColor: Colors.white.withOpacity(0.3),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 0, 0, 0)),
+                        style: const TextStyle
+                        (
+                          fontSize: 18, color: Color.fromARGB(255, 0, 0, 0)),
+                          decoration: InputDecoration
+                          (
+                            prefixIcon: const Icon(Icons.lock),
+                            labelText: 'Password',
+                            filled: true,
+                            fillColor: Colors.white.withOpacity(0.3),
+                            border: OutlineInputBorder
+                            (
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: const BorderSide
+                              (
+                                color: Color.fromARGB(255, 0, 0, 0)
+                              ),
+                            ),
                           ),
-                        ),
                       ),
                     ),
-                    const SizedBox(height: 20.0),
+                    const SizedBox(height: 25.0),
                     // Sign In button
-                    SizedBox(
+                    SizedBox
+                    (
                       width: 420,
                       height: 60,
-                      child: Padding(
+                      child: Padding
+                      (
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: ElevatedButton(
+                        child: ElevatedButton
+                        (
                           onPressed: () {},
-                          style: ElevatedButton.styleFrom(
+                          style: ElevatedButton.styleFrom
+                          (
                             primary: const Color.fromARGB(255, 157, 128, 164),
-                            shape: RoundedRectangleBorder(
+                            shape: RoundedRectangleBorder
+                            (
                               borderRadius: BorderRadius.circular(25),
                             ),
                           ),
                           child: const Text('Sign In',
-                              style: TextStyle(fontSize: 20)),
+                          style: TextStyle(fontSize: 20)),
                         ),
                       ),
                     ),
                     const SizedBox(height: 30.0),
-                    // Don't have an account + sign-up text button
-                    Row(
-                      children: [
-                        const Padding(
+                    Row
+                    (
+                      children: 
+                      [// Don't have an account 
+                        const Padding
+                        (
                           padding: EdgeInsets.only(left: 20.0),
-                          child: Text(
+                          child: Text
+                          (
                             "Don't have an account?",
-                            style: TextStyle(
-                                fontSize: 17,
-                                color: Color.fromARGB(255, 0, 0, 0)),
+                            style: TextStyle
+                            (
+                              fontSize: 17,
+                              color: Color.fromARGB(255, 0, 0, 0)
+                            ),
                           ),
                         ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
+                        //  sign-up text button
+                        TextButton
+                        (
+                          onPressed: () 
+                          {
+                            Navigator.push
+                            (
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignUp()),
+                              MaterialPageRoute
+                              (
+                                builder: (context) => const SignUp()
+                              ),
                             );
                           },
-                          child: const Text(
+                          child: const Text
+                          (
                             'Sign Up',
                             style: TextStyle(fontSize: 17),
                           ),
@@ -134,19 +179,28 @@ class _LogInState extends State<LogIn> {
                     ),
                     const SizedBox(height: 10.0),
                     // Forgot password
-                    Row(
-                      children: [
-                        Padding(
+                    Row
+                    (
+                      children: 
+                      [
+                        Padding
+                        (
                           padding: const EdgeInsets.only(left: 20.0),
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
+                          child: TextButton
+                          (
+                            onPressed: () 
+                            {
+                              Navigator.push
+                              (
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => const OTP()),
+                                MaterialPageRoute
+                                (
+                                  builder: (context) => const OTP()
+                                ),
                               );
                             },
-                            child: const Text(
+                            child: const Text
+                            (
                               'Forgot Password?',
                               style: TextStyle(fontSize: 17),
                             ),
