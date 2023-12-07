@@ -1,5 +1,5 @@
-import 'package:coin_ease/OTP.dart';
-import 'package:coin_ease/SignUp.dart';
+import 'package:coin_ease/OTP/otp_Screen1.dart';
+import 'package:coin_ease/Sign_UP/signup_Screen1.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
