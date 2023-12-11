@@ -12,22 +12,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold
     (
-      appBar: AppBar(
-        // leading: IconButton(
-        //   icon: const Icon(Icons.arrow_back),
-        //   onPressed: () {
-        //     Navigator.push(
-        //       context,
-        //       MaterialPageRoute(builder: (context) => const LogIn()),
-        //     );
-        //   },
-        // ),
-        backgroundColor: const Color.fromARGB(255, 201, 200, 200),
-        elevation: 0,
-      ),
+    appBar: AppBar(backgroundColor: Colors.blueAccent,),
      body: Container
      (
-          child: Center(
+          child: Center
+          (
             child: Text
             (
               'Home Screen',

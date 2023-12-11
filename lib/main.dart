@@ -1,6 +1,8 @@
 
 import 'package:coin_ease/LogIn.dart';
 import 'package:coin_ease/OTP/otp_Screen1.dart';
+import 'package:coin_ease/Sign_UP/signup_Screen1.dart';
+import 'package:coin_ease/Sign_UP/signup_Screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -23,11 +25,9 @@ class MyApp extends StatelessWidget
   {
     return   MaterialApp
     (
-      home:  OTP(),
+      home:  SignUp(),
       debugShowCheckedModeBanner: false,
     );
     
-  }
-  
-  
+  } 
 }
