@@ -1,3 +1,4 @@
+import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/screens/phone_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -21,14 +22,14 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 20.0, left: 20.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, left: 20.0),
                   child: Text(
                     'Log In',
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 157, 128, 164),
+                      color: colors['primary'],
                     ),
                   ),
                 ),
@@ -43,9 +44,6 @@ class _SignInState extends State<SignIn> {
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Color.fromARGB(255, 157, 128, 164),
-                        ),
                       ),
                     ),
                     initialCountryCode: 'PK',
@@ -65,8 +63,6 @@ class _SignInState extends State<SignIn> {
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                            color: Color.fromARGB(255, 157, 128, 164)),
                       ),
                     ),
                   ),
@@ -80,8 +76,7 @@ class _SignInState extends State<SignIn> {
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 157, 128, 164),
+                        backgroundColor: colors['primary'],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
@@ -110,11 +105,10 @@ class _SignInState extends State<SignIn> {
                               builder: (context) => const PhoneVerification()),
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         'Sign Up',
-                        style: TextStyle(
-                            fontSize: 17,
-                            color: Color.fromARGB(255, 157, 128, 164)),
+                        style:
+                            TextStyle(fontSize: 17, color: colors['primary']),
                       ),
                     ),
                   ],
@@ -132,11 +126,10 @@ class _SignInState extends State<SignIn> {
                                     const PhoneVerification()),
                           );
                         },
-                        child: const Text(
+                        child: Text(
                           'Forgot Password?',
-                          style: TextStyle(
-                              fontSize: 17,
-                              color: Color.fromARGB(255, 157, 128, 164)),
+                          style:
+                              TextStyle(fontSize: 17, color: colors['primary']),
                         ),
                       ),
                     ),
