@@ -8,7 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class SignUp1 extends StatefulWidget {
   final String userId;
 
-  const SignUp1({Key? key, required this.userId}) : super(key: key);
+  const SignUp1({super.key, required this.userId});
 
   @override
   State<SignUp1> createState() => _Signup1State();
@@ -127,8 +127,7 @@ class _Signup1State extends State<SignUp1> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            primary:
-                                const Color.fromARGB(255, 157, 128, 164),
+                            backgroundColor: const Color.fromARGB(255, 157, 128, 164),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
                             ),

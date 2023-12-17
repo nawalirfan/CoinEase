@@ -42,7 +42,7 @@ class SignUp extends StatelessWidget {
                 shrinkWrap: true,
                 children: [
                   const SizedBox(
-                    height: 100,
+                    height: 1,
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -59,7 +59,7 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 40.0),
+                      const SizedBox(height: 4.0),
                       const Padding(
                         padding: EdgeInsets.only(left: 20, right: 20),
                         child: Text(
@@ -76,7 +76,8 @@ class SignUp extends StatelessWidget {
                         child: TextField(
                           controller: fullNameController,
                           style: const TextStyle(
-                              fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 0, 0, 0)),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.3),
@@ -105,7 +106,8 @@ class SignUp extends StatelessWidget {
                         child: TextField(
                           controller: cnicController,
                           style: const TextStyle(
-                              fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 0, 0, 0)),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.3),
@@ -134,7 +136,8 @@ class SignUp extends StatelessWidget {
                         child: TextField(
                           controller: dateOfIssuanceController,
                           style: const TextStyle(
-                              fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 0, 0, 0)),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.3),
@@ -163,7 +166,8 @@ class SignUp extends StatelessWidget {
                         child: TextField(
                           controller: fatherOrHusbandNameController,
                           style: const TextStyle(
-                              fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 0, 0, 0)),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.3),
@@ -192,7 +196,8 @@ class SignUp extends StatelessWidget {
                         child: TextField(
                           controller: motherNameController,
                           style: const TextStyle(
-                              fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 0, 0, 0)),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.3),
@@ -204,7 +209,7 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 100.0),
+                      const SizedBox(height: 1.0),
                       SizedBox(
                         width: 420,
                         height: 60,
@@ -235,11 +240,12 @@ class SignUp extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SignUp1(userId: userId)),
+                                    builder: (context) =>
+                                        SignUp1(userId: userId)),
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              primary:
+                              backgroundColor:
                                   const Color.fromARGB(255, 157, 128, 164),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),

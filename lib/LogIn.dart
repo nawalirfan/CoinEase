@@ -5,7 +5,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 
 class LogIn extends StatefulWidget 
 {
-  const LogIn({Key? key}) : super(key: key);
+  const LogIn({super.key});
 
   @override
   State<LogIn> createState() => _LogInState();
@@ -126,7 +126,7 @@ class _LogInState extends State<LogIn>
                           onPressed: () {},
                           style: ElevatedButton.styleFrom
                           (
-                            primary: const Color.fromARGB(255, 157, 128, 164),
+                            backgroundColor: const Color.fromARGB(255, 157, 128, 164),
                             shape: RoundedRectangleBorder
                             (
                               borderRadius: BorderRadius.circular(25),

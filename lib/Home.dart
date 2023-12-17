@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
     appBar: AppBar(backgroundColor: Colors.blueAccent,),
      body: Container
      (
-          child: Center
+          child: const Center
           (
             child: Text
             (

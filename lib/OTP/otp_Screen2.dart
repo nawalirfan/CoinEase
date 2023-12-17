@@ -193,7 +193,7 @@ import 'package:pinput/pinput.dart';
 
 class OTP1 extends StatefulWidget 
 {
-  OTP1({super.key});
+  const OTP1({super.key});
 
   @override
   _OTP1State createState() => _OTP1State();
@@ -298,8 +298,8 @@ class _OTP1State extends State<OTP1>
               ),
               // Display the wrong OTP message
               if (wrongOTP)
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text(
                     'Wrong OTP entered. Please try again.',
                     style: TextStyle(
@@ -322,7 +322,7 @@ class _OTP1State extends State<OTP1>
                       await auth.signInWithCredential(credential);
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => Home()),
+                        MaterialPageRoute(builder: (context) => const Home()),
                         (route) => false,
                       );
                     } catch (e) {
@@ -333,15 +333,15 @@ class _OTP1State extends State<OTP1>
                       });
                     }
                   },
-                  child: Text(
-                    'Verify phone number',
-                    style: TextStyle(color: Colors.black),
-                  ),
                   style: ElevatedButton.styleFrom(
-                    primary: const Color.fromARGB(255, 157, 128, 164),
+                    backgroundColor: const Color.fromARGB(255, 157, 128, 164),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
+                  ),
+                  child: const Text(
+                    'Verify phone number',
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
               ),
