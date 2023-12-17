@@ -1,16 +1,23 @@
 import 'package:coin_ease/colors.dart';
+import 'package:coin_ease/models/user_model.dart';
+import 'package:coin_ease/screens/home_page.dart';
 import 'package:coin_ease/screens/phone_verification.dart';
+import 'package:coin_ease/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+  final String? phoneNumber;
+  const SignIn({super.key, this.phoneNumber = ''});
 
   @override
   State<SignIn> createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
+  TextEditingController passwordController = TextEditingController();
+  bool error = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +32,7 @@ class _SignInState extends State<SignIn> {
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0, left: 20.0),
                   child: Text(
-                    'Log In',
+                    'Enter Password',
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -34,25 +41,26 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: IntlPhoneField(
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      labelText: 'Phone Number',
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                    initialCountryCode: 'PK',
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 20, right: 20),
+                //   child: IntlPhoneField(
+                //     keyboardType: TextInputType.phone,
+                //     decoration: InputDecoration(
+                //       labelText: 'Phone Number',
+                //       filled: true,
+                //       fillColor: Colors.white,
+                //       border: OutlineInputBorder(
+                //         borderRadius: BorderRadius.circular(10.0),
+                //       ),
+                //     ),
+                //     initialCountryCode: 'PK',
+                //   ),
+                // ),
                 const SizedBox(height: 4.0),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: TextField(
+                    controller: passwordController,
                     obscureText: true,
                     style: const TextStyle(
                         fontSize: 18, color: Color.fromARGB(255, 0, 0, 0)),
@@ -61,6 +69,7 @@ class _SignInState extends State<SignIn> {
                       labelText: 'Password',
                       filled: true,
                       fillColor: Colors.white,
+                      errorText: error ? 'Incorrect Password' : null,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
@@ -74,15 +83,30 @@ class _SignInState extends State<SignIn> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        AuthService _authService = AuthService();
+                        UserModel? loginUser =
+                            await _authService.signIn(passwordController.text);
+                        if (loginUser != null) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                          );
+                        } else {
+                          print('login unsuccessful');
+                          setState(() {
+                            error = true;
+                          });
+                        }
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: colors['primary'],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
                       ),
-                      child:
-                          const Text('Sign In', style: TextStyle(fontSize: 20)),
+                      child: const Text('Continue',
+                          style: TextStyle(fontSize: 20)),
                     ),
                   ),
                 ),

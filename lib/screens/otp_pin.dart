@@ -1,6 +1,8 @@
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/screens/phone_verification.dart';
+import 'package:coin_ease/screens/sign_in.dart';
 import 'package:coin_ease/screens/sign_up.dart';
+import 'package:coin_ease/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
@@ -17,6 +19,21 @@ class _OtpPinState extends State<OtpPin> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final TextEditingController _pinEditingController = TextEditingController();
   bool wrongOTP = false;
+
+  void _handleVerify() async {
+    final AuthService authService = AuthService();
+    bool isUserSignedUp = await authService.isSignedUp(widget.phoneNumber);
+    if (isUserSignedUp) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => SignIn()));
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  SignUpDetails(phoneNumber: widget.phoneNumber)));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,14 +123,10 @@ class _OtpPinState extends State<OtpPin> {
                         verificationId: PhoneVerification.verify,
                         smsCode: code,
                       );
-                      await auth.signInWithCredential(credential);
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                SignUpDetails(phoneNumber: widget.phoneNumber)),
-                        (route) => false,
-                      );
+
+                      UserCredential user =
+                          await auth.signInWithCredential(credential);
+                      _handleVerify();
                     } catch (e) {
                       print('wrong otp');
                       // Set the wrongOTP flag when an incorrect OTP is detected

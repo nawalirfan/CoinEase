@@ -6,6 +6,7 @@ import 'package:coin_ease/models/account_model.dart';
 import 'package:coin_ease/models/transaction_model.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/account_details.dart';
+import 'package:coin_ease/screens/settings.dart';
 import 'package:coin_ease/screens/transaction_history.dart';
 import 'package:coin_ease/widgets/transactionsList.dart';
 import 'package:flutter/material.dart';
@@ -276,7 +277,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: colors['secondary'],
         selectedItemColor: colors['primary'],
         unselectedItemColor: const Color.fromARGB(255, 105, 104, 105),
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.help_center),
             label: 'Help Center',
@@ -286,7 +287,15 @@ class _HomePageState extends State<HomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingsScreen()));
+              },
+              child: const Icon(Icons.settings),
+            ),
             label: 'Settings',
           ),
         ],
