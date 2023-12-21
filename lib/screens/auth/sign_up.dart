@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/user_model.dart';
-import 'package:coin_ease/screens/sign_in.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:coin_ease/screens/auth/sign_in.dart';
+import 'package:coin_ease/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class SignUpDetails extends StatefulWidget {
@@ -20,23 +19,37 @@ class _SignUpDetailsState extends State<SignUpDetails> {
   TextEditingController mNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController cPasswordController = TextEditingController();
+  bool passError = false;
 
-  void saveUser() {
-    // UserModel user = UserModel(id: id, phoneNumber: widget.phoneNumber, password: passwordController.text, name: nameController.text, cnic: cnicController.text, dateOfIssuance: dateController.text, motherName: mNameController.text)
-    Map<String, dynamic> userData = {
-      'phoneNumber': widget.phoneNumber,
-      'password': passwordController.text,
-      'name': nameController.text,
-      'cnic': cnicController.text,
-      'dateOfIssuance': dateController.text,
-      'motherName': mNameController.text
-    };
+  final AuthService _authService = AuthService();
+
+  Future<bool> saveUser() async {
     if (passwordController.text == cPasswordController.text) {
-      FirebaseFirestore.instance.collection('users').add(userData);
-      print('user created!');
+      UserModel user = UserModel(
+          id: '',
+          phoneNumber: widget.phoneNumber,
+          password: passwordController.text,
+          name: nameController.text,
+          cnic: cnicController.text,
+          dateOfIssuance: dateController.text,
+          motherName: mNameController.text);
+
+      bool isRegistered = await _authService.register(user);
+      return isRegistered;
     } else {
-      print('error');
+      print('plz enter same passwords');
+      setState(() {
+        passError = true;
+      });
+      return false;
     }
+  }
+
+  void navigate() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SignIn()),
+    );
   }
 
   @override
@@ -155,6 +168,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                     filled: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 10),
                     fillColor: Colors.white,
+                    errorText: passError ? 'Passwords dont match' : null,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     )),
@@ -164,12 +178,9 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                 height: 60,
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {
-                      saveUser();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignIn()),
-                      );
+                    onPressed: () async {
+                      bool saved = await saveUser();
+                      if (saved) navigate();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colors['primary'],

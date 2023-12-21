@@ -1,7 +1,7 @@
 import 'package:coin_ease/colors.dart';
-import 'package:coin_ease/screens/phone_verification.dart';
-import 'package:coin_ease/screens/sign_in.dart';
-import 'package:coin_ease/screens/sign_up.dart';
+import 'package:coin_ease/screens/auth/phone_verification.dart';
+import 'package:coin_ease/screens/auth/sign_in.dart';
+import 'package:coin_ease/screens/auth/sign_up.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -128,8 +128,7 @@ class _OtpPinState extends State<OtpPin> {
                           await auth.signInWithCredential(credential);
                       _handleVerify();
                     } catch (e) {
-                      print('wrong otp');
-                      // Set the wrongOTP flag when an incorrect OTP is detected
+                      print('wrong otp: ${e}');
                       setState(() {
                         wrongOTP = true;
                       });

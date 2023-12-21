@@ -1,3 +1,4 @@
+import 'package:coin_ease/dummyData/account.dart';
 import 'package:coin_ease/models/user_model.dart';
 
 List<UserModel> dummyUsers = [
@@ -8,7 +9,9 @@ List<UserModel> dummyUsers = [
       name: 'Nawal Irfan',
       cnic: '12345-6789012-3',
       dateOfIssuance: '2020-01-01',
-      motherName: 'XYZ'),
+      motherName: 'XYZ',
+      account: dummyAccounts[0],
+      ),
   UserModel(
       id: 'user2',
       phoneNumber: '1234567890',
@@ -16,5 +19,7 @@ List<UserModel> dummyUsers = [
       name: 'Nimra Nasrulla',
       cnic: '12345-6789012-0',
       dateOfIssuance: '2021-01-01',
-      motherName: 'ABC'),
+      motherName: 'ABC',
+      account: dummyAccounts[1],
+      ),
 ];

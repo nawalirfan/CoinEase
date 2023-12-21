@@ -5,24 +5,24 @@ import 'package:coin_ease/screens/transaction_detail.dart';
 import 'package:flutter/material.dart';
 
 class TransactionsList extends StatelessWidget {
-  final List<TransactionModel> transactions;
-  final UserAccount account;
+  final List<TransactionModel>? transactions;
+  final UserAccount? account;
   final int count;
   const TransactionsList(
       {super.key,
       required this.transactions,
       required this.count,
-      required this.account});
+      this.account});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         shrinkWrap: true,
-        itemCount: transactions.length > count ? count : transactions.length,
+        itemCount: transactions!.length > count ? count : transactions?.length,
         itemBuilder: (context, index) {
-          TransactionModel transaction = transactions[index];
+          TransactionModel transaction = transactions![index];
           return Container(
-            margin: const EdgeInsets.only(top: 8, bottom: 8),
+            margin: const EdgeInsets.only(top: 5, bottom: 5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: colors['secondary'],
@@ -43,13 +43,15 @@ class TransactionsList extends StatelessWidget {
                   backgroundColor: colors['primary'],
                   child: Text(
                     //change it to account title's initial
-                    transaction.accountTo.substring(0, 1).toUpperCase(),
+                    (transaction.accountTo['title'] ?? '')
+                        .substring(0, 1)
+                        .toUpperCase(),
                     style: const TextStyle(color: Colors.white),
                   ),
                 ),
                 //change it to account title
-                title: Text(transaction.accountTo),
-                subtitle: Text(transaction.dateTime.toString()),
+                title: Text(transaction.accountTo['title'] ?? ''),
+                subtitle: Text(transaction.dateTime.toDate().toString()),
                 trailing: Text(
                   '${transaction.isDebit ? '-' : '+'} Rs. ${transaction.amount}',
                   style: TextStyle(
