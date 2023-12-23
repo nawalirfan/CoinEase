@@ -30,7 +30,7 @@ class _OTPState extends State<OTP>
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const LogIn()),
+              MaterialPageRoute(builder: (context) => LogIn()),
             );
           },
         ),
