@@ -1,19 +1,22 @@
 import 'package:coin_ease/models/user_model.dart';
+import 'package:equatable/equatable.dart';
 
-abstract class SignInState {}
-
-class SignInInitialState extends SignInState {}
-
-class SignInLoadingState extends SignInState {}
-
-class SignInSuccessState extends SignInState {
-  final UserModel user;
-
-  SignInSuccessState({required this.user});
+abstract class SignInState extends Equatable {
+  @override
+  List<Object> get props => [];
 }
 
-class SignInErrorState extends SignInState {
-  final String errorMessage;
+class SignInInitial extends SignInState {}
 
-  SignInErrorState({required this.errorMessage});
+class SignInLoading extends SignInState {}
+
+class SignInSuccess extends SignInState {}
+
+class SignInFailure extends SignInState {
+  final String error;
+
+  SignInFailure({required this.error});
+
+  @override
+  List<Object> get props => [error];
 }

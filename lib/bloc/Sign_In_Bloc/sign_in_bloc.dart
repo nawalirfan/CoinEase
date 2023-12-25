@@ -7,27 +7,25 @@ import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:meta/meta.dart';
 
-
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
-  final AuthService _authService = AuthService();
+  final AuthService _authService;
 
-  SignInBloc() : super(SignInInitialState());
+  SignInBloc(this._authService) : super(SignInInitial()) {
+    on<SignInButtonPressed>(_onSignInButtonPressed);
+  }
 
-  @override
-  Stream<SignInState> mapEventToState(SignInEvent event) async* {
-    if (event is SignInButtonPressed) {
-      yield SignInLoadingState();
-
-      try {
-        UserModel? loginUser = await _authService.signIn(event.password);
-        if (loginUser != null) {
-          yield SignInSuccessState(user: loginUser);
-        } else {
-          yield SignInErrorState(errorMessage: 'Login unsuccessful');
-        }
-      } catch (e) {
-        yield SignInErrorState(errorMessage: 'An error occurred');
+  void _onSignInButtonPressed(
+      SignInButtonPressed event, Emitter<SignInState> emit) async {
+    emit(SignInLoading());
+    try {
+      UserModel? loginUser = await _authService.signIn(event.password);
+      if (loginUser != null) {
+        emit(SignInSuccess());
+      } else {
+        emit(SignInFailure(error: 'Incorrect Password'));
       }
+    } catch (e) {
+      emit(SignInFailure(error: e.toString()));
     }
   }
 }

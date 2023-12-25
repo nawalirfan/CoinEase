@@ -6,7 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-class PhoneVerification extends StatefulWidget {
+class PhoneVerification extends StatefulWidget 
+{
   const PhoneVerification({super.key});
   static String verify = "";
 

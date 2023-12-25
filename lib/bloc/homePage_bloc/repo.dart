@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class AccountDetail_Repository {
+class HomePageRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<List<DocumentSnapshot>> getList() async {
