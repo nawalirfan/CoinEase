@@ -16,7 +16,6 @@ class SignUpButtonPressed extends SignUpEvent {
   final String cnic;
   final String dateOfIssuance;
   final String motherName;
-  final UserAccount? account;
 
   const SignUpButtonPressed({
     required this.id,
@@ -26,18 +25,9 @@ class SignUpButtonPressed extends SignUpEvent {
     required this.cnic,
     required this.dateOfIssuance,
     required this.motherName,
-    required this.account,
   });
 
   @override
-  List<Object?> get props => [
-        id,
-        phoneNumber,
-        password,
-        name,
-        cnic,
-        dateOfIssuance,
-        motherName,
-        account
-      ];
+  List<Object?> get props =>
+      [id, phoneNumber, password, name, cnic, dateOfIssuance, motherName];
 }
