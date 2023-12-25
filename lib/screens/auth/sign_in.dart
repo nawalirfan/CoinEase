@@ -2,7 +2,6 @@ import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_bloc.dart';
 import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_event.dart';
 import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_state.dart';
 import 'package:coin_ease/colors.dart';
-import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/home_page.dart';
 import 'package:coin_ease/screens/auth/phone_verification.dart';
 import 'package:coin_ease/services/auth_service.dart';

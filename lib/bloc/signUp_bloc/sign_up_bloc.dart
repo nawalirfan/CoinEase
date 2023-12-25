@@ -74,7 +74,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       if (result) {
         emit(SignUpSuccess());
       } else {
-        emit(SignUpFailure(error: "Failed to register user"));
+        emit(const SignUpFailure(error: "Failed to register user"));
       }
     } catch (error) {
       emit(SignUpFailure(error: error.toString()));

@@ -20,3 +20,4 @@ class SignInFailure extends SignInState {
   @override
   List<Object> get props => [error];
 }
+

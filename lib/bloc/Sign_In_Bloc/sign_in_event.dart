@@ -13,3 +13,4 @@ class SignInButtonPressed extends SignInEvent {
   @override
   List<Object> get props => [password];
 }
+

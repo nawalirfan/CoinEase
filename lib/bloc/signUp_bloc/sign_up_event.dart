@@ -31,3 +31,4 @@ class SignUpButtonPressed extends SignUpEvent {
   List<Object?> get props =>
       [id, phoneNumber, password, name, cnic, dateOfIssuance, motherName];
 }
+

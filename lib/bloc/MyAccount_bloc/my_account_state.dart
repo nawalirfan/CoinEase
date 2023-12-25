@@ -1,33 +1,21 @@
-// states.dart
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:equatable/equatable.dart';
-import 'package:coin_ease/models/account_model.dart';
 
-abstract class AccountDetailState extends Equatable {
-  const AccountDetailState();
+abstract class AccountDetail_State {}
 
-  @override
-  List<Object> get props => [];
+class LoadingState extends AccountDetail_State {}
+
+class LoadedState extends AccountDetail_State {
+  final List<DocumentSnapshot<Object?>> records;
+
+  LoadedState(this.records);
 }
 
-class AccountDetailInitialState extends AccountDetailState {}
 
-class AccountDetailLoadingState extends AccountDetailState {}
-
-class LoadedState extends AccountDetailState {
-  final List<DocumentSnapshot<Object?>> accounts;
-
-  LoadedState(this.accounts);
-}
-
-class AccountDetailErrorState extends AccountDetailState {
+class ErrorState extends AccountDetail_State {
   final String error;
 
-  const AccountDetailErrorState(this.error);
-
-  @override
-  List<Object> get props => [error];
+  ErrorState(this.error);
 }
-
-
 

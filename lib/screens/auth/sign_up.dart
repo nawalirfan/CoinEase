@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart'; // Add this import
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/bloc/signUp_bloc/sign_up_bloc.dart';
