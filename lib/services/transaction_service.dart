@@ -18,7 +18,7 @@ class TransactionService {
       return TransactionModel(
           id: doc.id,
           account: doc['account'],
-          amount: doc['amount'],
+          amount: doc['amount'].toDouble(),
           isDebit: doc['isDebit'],
           accountTo: doc['accountTo'],
           dateTime: doc['dateTime'],
