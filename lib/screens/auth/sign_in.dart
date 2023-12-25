@@ -4,7 +4,6 @@ import 'package:coin_ease/screens/home_page.dart';
 import 'package:coin_ease/screens/auth/phone_verification.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
 class SignIn extends StatefulWidget {
   final String? phoneNumber;
