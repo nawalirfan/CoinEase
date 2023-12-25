@@ -36,6 +36,25 @@ class UserService {
                 bankName: accountData['bankName'],
                 cardNo: accountData['cardNo'],
                 isActive: accountData['isActive']));
+
+        // Listen for real-time updates
+        userReference.snapshots().listen((event) {
+          // Update the user object with the latest data
+          UserModel updatedUser = UserModel(
+            id: event.id,
+            phoneNumber: event['phoneNumber'],
+            password: event['password'],
+            name: event['name'],
+            cnic: event['cnic'],
+            dateOfIssuance: event['dateOfIssuance'],
+            motherName: event['motherName'],
+            account: UserAccount.fromJson(event['account']),
+          );
+
+          // TODO: Update your UI or state with the updated user data
+          print('User data updated in real-time: $updatedUser');
+        });
+
         return user;
       } else {
         throw 'Account not found';
@@ -75,44 +94,92 @@ class UserService {
   }
 
   Future<UserModel?> getUserById(String? id) async {
-  try {
-    var documentSnapshot = await userCollection.doc(id).get();
-    
-    if (documentSnapshot.exists) {
-      Map<String, dynamic> userData = documentSnapshot.data() as Map<String, dynamic>;
-      Map<String, dynamic> accountData = userData['account'];
+    try {
+      var documentReference = userCollection.doc(id);
 
-      print('user found: ${userData.toString()}');
+      var documentSnapshot = await documentReference.get();
 
-      UserModel user = UserModel(
-        id: documentSnapshot.id,
-        phoneNumber: userData['phoneNumber'],
-        password: userData['password'],
-        name: userData['name'],
-        cnic: userData['cnic'],
-        dateOfIssuance: userData['dateOfIssuance'],
-        motherName: userData['motherName'],
-        account: UserAccount(
-          accountNumber: accountData['accountNumber'],
-          title: accountData['title'],
-          balance: accountData['balance']?.toDouble(),
-          accountType: accountData['accountType'],
-          iban: accountData['iban'],
-          bankName: accountData['bankName'],
-          cardNo: accountData['cardNo'],
-          isActive: accountData['isActive'],
-        ),
-      );
+      if (documentSnapshot.exists) {
+        Map<String, dynamic> userData =
+            documentSnapshot.data() as Map<String, dynamic>;
+        Map<String, dynamic> accountData = userData['account'];
 
-      return user;
-    } else {
-      throw 'Account not found';
+        print('user found: ${userData.toString()}');
+
+        UserModel user = UserModel(
+          id: documentSnapshot.id,
+          phoneNumber: userData['phoneNumber'],
+          password: userData['password'],
+          name: userData['name'],
+          cnic: userData['cnic'],
+          dateOfIssuance: userData['dateOfIssuance'],
+          motherName: userData['motherName'],
+          account: UserAccount(
+            accountNumber: accountData['accountNumber'],
+            title: accountData['title'],
+            balance: accountData['balance']?.toDouble(),
+            accountType: accountData['accountType'],
+            iban: accountData['iban'],
+            bankName: accountData['bankName'],
+            cardNo: accountData['cardNo'],
+            isActive: accountData['isActive'],
+          ),
+        );
+
+        // Listen for real-time updates
+        documentReference.snapshots().listen((event) {
+          // Update the user object with the latest data
+          UserModel updatedUser = UserModel(
+            id: event.id,
+            phoneNumber: event['phoneNumber'],
+            password: event['password'],
+            name: event['name'],
+            cnic: event['cnic'],
+            dateOfIssuance: event['dateOfIssuance'],
+            motherName: event['motherName'],
+            account: UserAccount.fromJson(event['account']),
+          );
+
+          // TODO: Update your UI or state with the updated user data
+          print('User data updated in real-time: $updatedUser');
+        });
+
+        return user;
+      } else {
+        throw 'Account not found';
+      }
+    } catch (e) {
+      print('error while getting the user/account in this fn: $e');
+      return null;
     }
-  } catch (e) {
-    print('error while getting the user/account in this fn: $e');
-    return null;
   }
-}
 
+  Future<void> updateUserDetailsByPhoneNumber(
+    String phoneNumber,
+    String newCnic,
+    String newDateOfIssuance,
+    String newMotherName,
+  ) async {
+    try {
+      var querySnapshot = await userCollection
+          .where('phoneNumber', isEqualTo: phoneNumber)
+          .get();
 
+      if (querySnapshot.docs.isNotEmpty) {
+        var userDocument = querySnapshot.docs.first;
+
+        await userDocument.reference.update({
+          'cnic': newCnic,
+          'dateOfIssuance': newDateOfIssuance,
+          'motherName': newMotherName,
+        });
+
+        print('User details updated successfully');
+      } else {
+        print('User not found with the provided phone number');
+      }
+    } catch (e) {
+      print('Error updating user details: $e');
+    }
+  }
 }

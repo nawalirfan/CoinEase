@@ -1,11 +1,8 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_event.dart';
 import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_state.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/services/auth_service.dart';
-import 'package:meta/meta.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final AuthService _authService;

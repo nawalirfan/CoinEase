@@ -1,4 +1,3 @@
-import 'package:coin_ease/models/user_model.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class SignInState extends Equatable {

@@ -3,7 +3,6 @@ import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/home_page.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:coin_ease/services/transaction_service.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmPayment extends StatelessWidget {
@@ -63,11 +62,14 @@ class ConfirmPayment extends StatelessWidget {
                   AuthService auth = AuthService();
                   UserModel? sender = await auth.getLoggedInUser();
                   TransactionService transactionService = TransactionService();
-                  transactionService.createTransaction(sender, user, amount);
+                  bool created = await transactionService.createTransaction(
+                      sender, user, amount);
 
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Transaction successful!'),
+                    SnackBar(
+                      content: Text(created
+                          ? 'Transaction successful!'
+                          : 'You don\'t have enough money for this transaction'),
                     ),
                   );
                   Navigator.push(context,

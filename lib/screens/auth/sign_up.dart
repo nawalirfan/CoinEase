@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart'; 
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/bloc/signUp_bloc/sign_up_bloc.dart';
 import 'package:coin_ease/bloc/signUp_bloc/sign_up_event.dart';
 import 'package:coin_ease/bloc/signUp_bloc/sign_up_state.dart';
@@ -9,7 +7,6 @@ import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/auth/sign_in.dart';
 import 'package:coin_ease/services/auth_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpDetails extends StatefulWidget {
   final String phoneNumber;
@@ -20,8 +17,6 @@ class SignUpDetails extends StatefulWidget {
 }
 
 class _SignUpDetailsState extends State<SignUpDetails> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   TextEditingController nameController = TextEditingController();
   TextEditingController cnicController = TextEditingController();

@@ -40,9 +40,6 @@ class AuthService {
       } else {
         throw 'Account not found';
       }
-      // } else {
-      //   throw 'User not found';
-      // }
     } catch (e) {
       print('error while getting the user/account : $e');
       return null;

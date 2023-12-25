@@ -1,4 +1,3 @@
-import 'package:coin_ease/models/account_model.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class SignUpEvent extends Equatable {

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/bloc/MyAccount_bloc/my_account_bloc.dart';
 import 'package:coin_ease/bloc/MyAccount_bloc/my_account_event.dart';
 import 'package:coin_ease/bloc/MyAccount_bloc/my_account_state.dart';
-import 'package:coin_ease/bloc/MyAccount_bloc/repo.dart';
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/account_model.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,6 @@ class _AccountDetailState extends State<AccountDetail> {
   void initState() {
     super.initState();
     _loadData();
-    AccountDetail_Repository().getList();
   }
 
   Future<void> _loadData() async {
@@ -70,7 +68,7 @@ class _AccountDetailState extends State<AccountDetail> {
   }
 
   Widget buildListView(List<DocumentSnapshot> account) {
-    return  Column(
+    return Column(
       children: [
         const SizedBox(height: 30),
         Container(

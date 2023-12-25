@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 class TransactionModel {
   final String id;
@@ -20,5 +19,4 @@ class TransactionModel {
     required this.refNumber,
   });
 
-  // TransactionModel.fromJson(Map<String, dynamic> json) {}
 }

@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
-
 enum AuthenticationStatus { authenticated, unauthenticated, unknown }
 
 class AuthenticationState extends Equatable {

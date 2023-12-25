@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class AccountDetail_Repository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 

@@ -12,10 +12,11 @@ class ListBloc extends Bloc<HomePageEvent, HomePageState> {
       emit(HomePageLoadingState());
       try {
         List<DocumentSnapshot> records = await _repository.getList();
-        print(' Data Fetched Successfully: $records');
+        print(
+            ' Data Fetched Successfully in home page loadDataEvent: $records');
         emit(HomePageLoadedState(records));
       } catch (e) {
-        print('Error fetching Data: $e');
+        print('Error fetching Data in home page loadDataEvent: $e');
         emit(HomePageErrorState("Failed to load Data: $e"));
       }
     });

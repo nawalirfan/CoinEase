@@ -122,9 +122,7 @@ class _OtpPinState extends State<OtpPin> {
                           PhoneAuthProvider.credential(
                         verificationId: PhoneVerification.verify,
                         smsCode: code,
-                      );
-
-                      UserCredential user =
+                      );                      
                           await auth.signInWithCredential(credential);
                       _handleVerify();
                     } catch (e) {

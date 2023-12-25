@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/core/repository/user_repo.dart';
 import 'package:coin_ease/models/user_model.dart';
-import 'package:coin_ease/screens/auth/sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart' as FirebaseAuth;
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -36,9 +35,8 @@ class FirebaseUserRepo implements UserRepository {
   @override
   Future<UserModel> signUp(UserModel myUser, String password) async {
     try {
-      FirebaseAuth.UserCredential user =
           await _firebaseAuth.createUserWithEmailAndPassword(
-        email: myUser.phoneNumber!,
+        email: myUser.phoneNumber,
         password: password,
       );
 
