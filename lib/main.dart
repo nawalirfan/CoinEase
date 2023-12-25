@@ -1,33 +1,39 @@
-
-import 'package:coin_ease/LogIn.dart';
-import 'package:coin_ease/OTP/otp_Screen1.dart';
-import 'package:coin_ease/Sign_UP/signup_Screen1.dart';
-import 'package:coin_ease/Sign_UP/signup_Screen2.dart';
+import 'package:coin_ease/core/network.dart';
+import 'package:coin_ease/core/repository/user_repo.dart';
+import 'package:coin_ease/screens/auth/phone_verification.dart';
+import 'package:coin_ease/screens/auth/sign_up.dart';
+import 'package:coin_ease/screens/settings.dart';
+import 'package:coin_ease/screens/auth/sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 
-void main() async 
-{
-    await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
-  runApp(const MyApp());
-}
+
 class MyApp extends StatelessWidget 
 {
-  const MyApp({super.key});
+  final UserRepository userRepository;
+  const MyApp(this.userRepository, {Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) 
-  {
-    return   MaterialApp
-    (
-      home:  LogIn(),
+  Widget build(BuildContext context) {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+
+    return MaterialApp(
+      home: currentUser == null
+          ? const PhoneVerification()
+          : SignIn(phoneNumber: currentUser.phoneNumber ?? ""),
       debugShowCheckedModeBanner: false,
     );
-    
-  } 
+  }
 }
+
+void main() async 
+{
+ await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+ runApp(MyApp(FirebaseUserRepo()));
+}
+
