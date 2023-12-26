@@ -232,17 +232,17 @@ class _HomePageState extends State<HomePage> {
                           const Text('Bills')
                         ],
                       ),
-                      Column(
-                        children: [
-                          CircleAvatar(
-                              radius: 30,
-                              backgroundColor: colors['primary'],
-                              foregroundColor: Colors.white,
-                              child: const Icon(Icons.query_stats)),
-                          const SizedBox(height: 10),
-                          const Text('Analytics')
-                        ],
-                      ),
+                      // Column(
+                      //   children: [
+                      //     CircleAvatar(
+                      //         radius: 30,
+                      //         backgroundColor: colors['primary'],
+                      //         foregroundColor: Colors.white,
+                      //         child: const Icon(Icons.query_stats)),
+                      //     const SizedBox(height: 10),
+                      //     const Text('Analytics')
+                      //   ],
+                      // ),
                     ],
                   ),
                   const SizedBox(height: 30),
