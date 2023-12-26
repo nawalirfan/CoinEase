@@ -3,6 +3,7 @@ import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_event.dart';
 import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_state.dart';
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/screens/admin/dashboard.dart';
+import 'package:coin_ease/screens/auth/Forget_password.dart';
 import 'package:coin_ease/screens/home_page.dart';
 import 'package:coin_ease/screens/auth/phone_verification.dart';
 import 'package:coin_ease/services/auth_service.dart';
@@ -180,7 +181,7 @@ class _SignInPageState extends State<SignInPage> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const PhoneVerification()),
+                                      const ForgetPassword()),
                             );
                           },
                           child: Text(

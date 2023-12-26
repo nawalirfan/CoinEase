@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/models/account_model.dart';
 import 'package:coin_ease/models/user_model.dart';
+import 'package:coin_ease/screens/auth/Forget_password.dart';
 
 class UserService {
   final userCollection = FirebaseFirestore.instance.collection('users');
@@ -188,3 +189,4 @@ class UserService {
     }
   }
 }
+
