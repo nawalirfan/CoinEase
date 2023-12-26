@@ -9,7 +9,10 @@ class SignInInitial extends SignInState {}
 
 class SignInLoading extends SignInState {}
 
-class SignInSuccess extends SignInState {}
+class SignInSuccess extends SignInState {
+  final bool isAdmin;
+  SignInSuccess({required this.isAdmin});
+}
 
 class SignInFailure extends SignInState {
   final String error;
@@ -19,4 +22,3 @@ class SignInFailure extends SignInState {
   @override
   List<Object> get props => [error];
 }
-

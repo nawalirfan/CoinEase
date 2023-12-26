@@ -17,7 +17,11 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     try {
       UserModel? loginUser = await _authService.signIn(event.password);
       if (loginUser != null) {
-        emit(SignInSuccess());
+        if (loginUser.role == 'admin') {
+          emit(SignInSuccess(isAdmin: true));
+        } else {
+          emit(SignInSuccess(isAdmin: false));
+        }
       } else {
         emit(SignInFailure(error: 'Incorrect Password'));
       }

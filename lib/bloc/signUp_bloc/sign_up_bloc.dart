@@ -41,7 +41,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         'cnic': user.cnic,
         'dateOfIssuance': user.dateOfIssuance,
         'motherName': user.motherName,
-        'account': accountData
+        'account': accountData,
+        'role': 'user',
       };
 
       DocumentReference userRef =
@@ -68,6 +69,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         cnic: event.cnic,
         dateOfIssuance: event.dateOfIssuance,
         motherName: event.motherName,
+        role: 'user',
       );
 
       bool result = await register(userModel);

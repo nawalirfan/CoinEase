@@ -2,6 +2,7 @@ import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_bloc.dart';
 import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_event.dart';
 import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_state.dart';
 import 'package:coin_ease/colors.dart';
+import 'package:coin_ease/screens/admin/dashboard.dart';
 import 'package:coin_ease/screens/home_page.dart';
 import 'package:coin_ease/screens/auth/phone_verification.dart';
 import 'package:coin_ease/services/auth_service.dart';
@@ -49,8 +50,13 @@ class _SignInPageState extends State<SignInPage> {
           setState(() {
             loading = false;
           });
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomePage()));
+          if (state.isAdmin) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Dashboard()));
+          } else {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const HomePage()));
+          }
         } else if (state is SignInFailure) {
           setState(() {
             loading = false;

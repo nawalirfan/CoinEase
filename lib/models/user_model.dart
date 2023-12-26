@@ -9,15 +9,16 @@ class UserModel {
   late final String dateOfIssuance;
   late final String motherName;
   final UserAccount? account;
+  final String role;
 
-  UserModel({
-    required this.id,
-    required this.phoneNumber,
-    required this.password,
-    required this.name,
-    required this.cnic,
-    required this.dateOfIssuance,
-    required this.motherName,
-    this.account
-  });
+  UserModel(
+      {required this.id,
+      required this.phoneNumber,
+      required this.password,
+      required this.name,
+      required this.cnic,
+      required this.dateOfIssuance,
+      required this.motherName,
+      required this.role,
+      this.account});
 }

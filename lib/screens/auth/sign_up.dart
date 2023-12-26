@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart'; 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coin_ease/bloc/signUp_bloc/sign_up_bloc.dart';
 import 'package:coin_ease/bloc/signUp_bloc/sign_up_event.dart';
 import 'package:coin_ease/bloc/signUp_bloc/sign_up_state.dart';
@@ -17,7 +17,6 @@ class SignUpDetails extends StatefulWidget {
 }
 
 class _SignUpDetailsState extends State<SignUpDetails> {
-
   TextEditingController nameController = TextEditingController();
   TextEditingController cnicController = TextEditingController();
   TextEditingController dateController = TextEditingController();
@@ -38,7 +37,8 @@ class _SignUpDetailsState extends State<SignUpDetails> {
           name: nameController.text,
           cnic: cnicController.text,
           dateOfIssuance: dateController.text,
-          motherName: mNameController.text);
+          motherName: mNameController.text,
+          role: 'user');
 
       bool isRegistered = await _authService.register(user);
       return isRegistered;

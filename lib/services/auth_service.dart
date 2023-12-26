@@ -27,6 +27,7 @@ class AuthService {
             cnic: userData['cnic'],
             dateOfIssuance: userData['dateOfIssuance'],
             motherName: userData['motherName'],
+            role: userData['role'],
             account: UserAccount(
                 accountNumber: accountData['accountNumber'],
                 title: accountData['title'],
@@ -94,8 +95,7 @@ class AuthService {
   }
 
   Future<UserModel?> signIn(String password) async {
-    String? phoneNumber = currentUser?.phoneNumber;
-    print('in signIn fiunction: ${phoneNumber} ${password}');
+    String? phoneNumber = currentUser?.phoneNumber;    
     if (phoneNumber != null) {
       try {
         QuerySnapshot querySnapshot = await FirebaseFirestore.instance
@@ -118,7 +118,9 @@ class AuthService {
               cnic: userData['cnic'],
               dateOfIssuance: userData['dateOfIssuance'],
               motherName: userData['motherName'],
+              role: userData['role'],
             );
+            
             return user;
           } else {
             print('Incorrect password');

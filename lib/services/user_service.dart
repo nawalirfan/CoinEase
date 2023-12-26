@@ -16,8 +16,7 @@ class UserService {
         Map<String, dynamic> accountData = userData['account'];
         print('user found: ${userData.toString()}');
 
-        print(
-            'type of balance: ${accountData['balance'].toDouble().runtimeType}');
+        print('type of balance: ${userData['pho'].runtimeType}');
 
         UserModel user = UserModel(
             id: querySnapshot.docs.first.id,
@@ -27,6 +26,7 @@ class UserService {
             cnic: userData['cnic'],
             dateOfIssuance: userData['dateOfIssuance'],
             motherName: userData['motherName'],
+            role: userData['role'],
             account: UserAccount(
                 accountNumber: accountData['accountNumber'],
                 title: accountData['title'],
@@ -40,6 +40,7 @@ class UserService {
         // Listen for real-time updates
         userReference.snapshots().listen((event) {
           // Update the user object with the latest data
+          print('type of id: ${event.id.runtimeType}');
           UserModel updatedUser = UserModel(
             id: event.id,
             phoneNumber: event['phoneNumber'],
@@ -48,6 +49,7 @@ class UserService {
             cnic: event['cnic'],
             dateOfIssuance: event['dateOfIssuance'],
             motherName: event['motherName'],
+            role: event['role'],
             account: UserAccount.fromJson(event['account']),
           );
 
@@ -84,6 +86,7 @@ class UserService {
             cnic: doc['cnic'],
             dateOfIssuance: doc['dateOfIssuance'],
             motherName: doc['motherName'],
+            role: doc['role'],
             account: UserAccount.fromJson(doc['account']));
       }).toList();
       return usersList;
@@ -114,6 +117,7 @@ class UserService {
           cnic: userData['cnic'],
           dateOfIssuance: userData['dateOfIssuance'],
           motherName: userData['motherName'],
+          role: userData['role'],
           account: UserAccount(
             accountNumber: accountData['accountNumber'],
             title: accountData['title'],
@@ -137,6 +141,7 @@ class UserService {
             cnic: event['cnic'],
             dateOfIssuance: event['dateOfIssuance'],
             motherName: event['motherName'],
+            role: event['role'],
             account: UserAccount.fromJson(event['account']),
           );
 
