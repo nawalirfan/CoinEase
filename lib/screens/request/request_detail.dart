@@ -1,10 +1,16 @@
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/request_model.dart';
+import 'package:coin_ease/models/user_model.dart';
+import 'package:coin_ease/screens/Send/enter_amount.dart';
+import 'package:coin_ease/screens/home_page.dart';
+import 'package:coin_ease/services/request_service.dart';
+import 'package:coin_ease/services/user_service.dart';
 import 'package:flutter/material.dart';
 
 class RequestDetail extends StatefulWidget {
   final RequestModel request;
-  const RequestDetail({super.key, required this.request});
+  final UserModel user;
+  const RequestDetail({super.key, required this.request, required this.user});
 
   @override
   State<RequestDetail> createState() => _TransactionDetailState();
@@ -142,7 +148,18 @@ class _TransactionDetailState extends State<RequestDetail> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      RequestService req = RequestService();
+                      bool deleted = await req.deleteRequest(
+                          widget.request.id, widget.user.id);
+
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(deleted
+                              ? 'Request Deleted Successfully!'
+                              : 'Error while deleting request, try again!')));
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: colors['primary']),
                     child: const Row(
@@ -150,7 +167,15 @@ class _TransactionDetailState extends State<RequestDetail> {
                       children: [Text('Delete'), Icon(Icons.delete)],
                     )),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      UserService service = UserService();
+                      UserModel? user = await service
+                          .getUserById(widget.request.reqfrom['id']);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EnterAmount(user: user!)));
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: colors['primary']),
                     child: const Row(

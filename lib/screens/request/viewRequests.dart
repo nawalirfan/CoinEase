@@ -20,7 +20,7 @@ class _RequestsState extends State<Requests> {
   List<RequestModel>? reqList = [];
   Future<void> _initializeData() async {
     user = await auth.getLoggedInUser();
-    reqList = await req.getTransactions(user);
+    reqList = await req.getRequests(user);
     setState(() {});
     print(reqList.toString());
   }
@@ -65,6 +65,7 @@ class _RequestsState extends State<Requests> {
                         MaterialPageRoute(
                             builder: (context) => RequestDetail(
                                   request: request,
+                                  user: user!,
                                 )),
                       );
                     },

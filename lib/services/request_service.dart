@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/models/request_model.dart';
 import 'package:coin_ease/models/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RequestService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<List<RequestModel>?> getTransactions(UserModel? user) async {
+  Future<List<RequestModel>?> getRequests(UserModel? user) async {
     try {
       DocumentReference userRef = _firestore.collection('users').doc(user?.id);
 
@@ -14,8 +15,7 @@ class RequestService {
           .orderBy('dateTime', descending: true)
           .get();
 
-      List<RequestModel> requests =
-          requestsSnapshot.docs.map((doc) {
+      List<RequestModel> requests = requestsSnapshot.docs.map((doc) {
         return RequestModel(
           id: doc.id,
           amount: doc['amount'].toDouble(),
@@ -27,8 +27,7 @@ class RequestService {
 
       // Listen for real-time updates
       userRef.collection('requests').snapshots().listen((querySnapshot) {
-        List<RequestModel> updatedRequests =
-            querySnapshot.docs.map((doc) {
+        List<RequestModel> updatedRequests = querySnapshot.docs.map((doc) {
           return RequestModel(
             id: doc.id,
             amount: doc['amount'].toDouble(),
@@ -78,6 +77,27 @@ class RequestService {
       return true;
     } catch (e) {
       print("Request failed: $e");
+      return false;
+    }
+  }
+
+  Future<bool> deleteRequest(String requestId, String reqTo) async {
+    try {      
+      DocumentReference userRef = _firestore.collection('users').doc(reqTo);
+      CollectionReference requestsRef = userRef.collection('requests');
+
+      DocumentReference requestRef = requestsRef.doc(requestId);
+
+      var requestDoc = await requestRef.get();
+      if (!requestDoc.exists) {
+        throw 'Request not found';
+      }
+
+      await requestRef.delete();
+
+      return true;
+    } catch (e) {
+      print('Error deleting request: $e');
       return false;
     }
   }
