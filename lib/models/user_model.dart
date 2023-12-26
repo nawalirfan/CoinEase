@@ -5,9 +5,9 @@ class UserModel {
   final String phoneNumber;
   final String password;
   final String name;
-  final String cnic;
-  final String dateOfIssuance;
-  final String motherName;
+  late final String cnic;
+  late final String dateOfIssuance;
+  late final String motherName;
   final UserAccount? account;
 
   UserModel({

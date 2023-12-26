@@ -6,6 +6,7 @@ import 'package:coin_ease/models/transaction_model.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/account_details.dart';
 import 'package:coin_ease/screens/Send/select_user.dart';
+import 'package:coin_ease/screens/request/select_user.dart';
 import 'package:coin_ease/screens/transaction_history.dart';
 import 'package:coin_ease/services/user_service.dart';
 import 'package:coin_ease/widgets/bottom_navbar.dart';
@@ -200,17 +201,25 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundColor: colors['primary'],
-                            foregroundColor: Colors.white,
-                            child: const Icon(Icons.arrow_downward),
-                          ),
-                          const SizedBox(height: 10),
-                          const Text('Request')
-                        ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const RequestMoney()));
+                        },
+                        child: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 30,
+                              backgroundColor: colors['primary'],
+                              foregroundColor: Colors.white,
+                              child: const Icon(Icons.arrow_downward),
+                            ),
+                            const SizedBox(height: 10),
+                            const Text('Request')
+                          ],
+                        ),
                       ),
                       Column(
                         children: [

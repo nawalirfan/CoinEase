@@ -1,17 +1,18 @@
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/user_model.dart';
+import 'package:coin_ease/screens/request/viewRequests.dart';
 import 'package:coin_ease/services/user_service.dart';
 import 'package:coin_ease/widgets/users_list.dart';
 import 'package:flutter/material.dart';
 
-class SendMoney extends StatefulWidget {
-  const SendMoney({super.key});
+class RequestMoney extends StatefulWidget {
+  const RequestMoney({super.key});
 
   @override
-  State<SendMoney> createState() => _SendMoneyState();
+  State<RequestMoney> createState() => _RequestMoneyState();
 }
 
-class _SendMoneyState extends State<SendMoney> {
+class _RequestMoneyState extends State<RequestMoney> {
   List<UserModel>? userList;
 
   void updateState(result) {
@@ -27,7 +28,17 @@ class _SendMoneyState extends State<SendMoney> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colors['primary'],
-        title: const Text('Send Money'),
+        title: const Text('Request Money'),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Requests()));
+            },
+            child: const Icon(Icons.notifications_on),
+          ),
+          const SizedBox(width: 15)
+        ],
       ),
       body: SingleChildScrollView(
           child: Container(
@@ -70,7 +81,7 @@ class _SendMoneyState extends State<SendMoney> {
             ),
             UserList(
               users: userList,
-              isSend: true,
+              isSend: false,
             ),
           ],
         ),

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-abstract class UserRepository //in video he  use 2 files and make the class abstract
+abstract class UserRepository 
 {
 	Stream<User?> get user;
 

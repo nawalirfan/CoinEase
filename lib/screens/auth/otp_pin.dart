@@ -19,10 +19,14 @@ class _OtpPinState extends State<OtpPin> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final TextEditingController _pinEditingController = TextEditingController();
   bool wrongOTP = false;
+  bool loading = false;
 
   void _handleVerify() async {
     final AuthService authService = AuthService();
     bool isUserSignedUp = await authService.isSignedUp(widget.phoneNumber);
+    setState(() {
+      loading = false;
+    });
     if (isUserSignedUp) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => SignIn()));
@@ -114,29 +118,34 @@ class _OtpPinState extends State<OtpPin> {
               const SizedBox(
                 height: 20,
               ),
-              ElevatedButton(
-                  onPressed: () async {
-                    try {
-                      String code = _pinEditingController.text;
-                      PhoneAuthCredential credential =
-                          PhoneAuthProvider.credential(
-                        verificationId: PhoneVerification.verify,
-                        smsCode: code,
-                      );                      
+              loading
+                  ? const CircularProgressIndicator()
+                  : ElevatedButton(
+                      onPressed: () async {
+                        try {
+                          setState(() {
+                            loading = true;
+                          });
+                          String code = _pinEditingController.text;
+                          PhoneAuthCredential credential =
+                              PhoneAuthProvider.credential(
+                            verificationId: PhoneVerification.verify,
+                            smsCode: code,
+                          );
                           await auth.signInWithCredential(credential);
-                      _handleVerify();
-                    } catch (e) {
-                      print('wrong otp: ${e}');
-                      setState(() {
-                        wrongOTP = true;
-                      });
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: colors['primary']),
-                  child: const Text(
-                    'Verify Phone Number',
-                  ))
+                          _handleVerify();
+                        } catch (e) {
+                          print('wrong otp: ${e}');
+                          setState(() {
+                            wrongOTP = true;
+                          });
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: colors['primary']),
+                      child: const Text(
+                        'Verify Phone Number',
+                      ))
             ],
           ),
         ),

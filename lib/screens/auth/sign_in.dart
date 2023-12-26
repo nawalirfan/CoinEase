@@ -33,16 +33,28 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   TextEditingController passwordController = TextEditingController();
+  bool loading = false;
   bool error = false;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<SignInBloc, SignInState>(
       listener: (context, state) {
+        if (state is SignInLoading) {
+          setState(() {
+            loading = true;
+          });
+        }
         if (state is SignInSuccess) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
+          setState(() {
+            loading = false;
+          });
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HomePage()));
         } else if (state is SignInFailure) {
+          setState(() {
+            loading = false;
+          });
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(state.error)));
         }
@@ -133,21 +145,23 @@ class _SignInPageState extends State<SignInPage> {
                               color: Color.fromARGB(255, 0, 0, 0)),
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const PhoneVerification()),
-                          );
-                        },
-                        child: Text(
-                          'Sign Up',
-                          style:
-                              TextStyle(fontSize: 17, color: colors['primary']),
-                        ),
-                      ),
+                      loading
+                          ? const CircularProgressIndicator()
+                          : TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PhoneVerification()),
+                                );
+                              },
+                              child: Text(
+                                'Sign Up',
+                                style: TextStyle(
+                                    fontSize: 17, color: colors['primary']),
+                              ),
+                            ),
                     ],
                   ),
                   Row(

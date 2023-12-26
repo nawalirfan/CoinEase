@@ -52,7 +52,7 @@ class UserService {
           );
 
           // TODO: Update your UI or state with the updated user data
-          print('User data updated in real-time: $updatedUser');
+          print('User data updated in real-time: ${updatedUser.toString()}');
         });
 
         return user;

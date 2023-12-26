@@ -36,6 +36,7 @@ class TransactionService {
         // Update the list with the latest transaction data
         List<TransactionModel> updatedTransactions =
             querySnapshot.docs.map((doc) {
+          print('${doc['dateTime'].runtimeType}');
           return TransactionModel(
             id: doc.id,
             account: doc['account'],
@@ -90,7 +91,6 @@ class TransactionService {
       if (newSenderBalance < 0) {
         throw 'you don\'t have enough money. plz receive funds from someone.';
       }
-      Timestamp time = FieldValue.serverTimestamp() as Timestamp;
       await senderRef.update({'account.balance': newSenderBalance});
       await senderTransactionsRef.add({
         'amount': amount,

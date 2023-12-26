@@ -1,12 +1,15 @@
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/Send/enter_amount.dart';
+import 'package:coin_ease/screens/request/EnterAmount.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class UserList extends StatelessWidget {
   final List<UserModel>? users;
+  final bool isSend;
 
-  const UserList({Key? key, required this.users}) : super(key: key);
+  const UserList({Key? key, required this.users, required this.isSend})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,9 @@ class UserList extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => EnterAmount(user: user)));
+                        builder: (context) => isSend
+                            ? EnterAmount(user: user)
+                            : EnterRequestAmount(user: user)));
               },
               child: ListTile(
                 leading: CircleAvatar(

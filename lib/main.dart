@@ -1,7 +1,6 @@
 import 'package:coin_ease/bloc/transactions/transaction_bloc.dart';
 import 'package:coin_ease/bloc/user/user_bloc.dart';
 import 'package:coin_ease/screens/auth/phone_verification.dart';
-import 'package:coin_ease/screens/settings.dart';
 import 'package:coin_ease/screens/auth/sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider<TransactionBloc>(create: (context) => TransactionBloc()),
-          BlocProvider<UserBloc>(create: (context) => UserBloc())
+          BlocProvider<UserBloc>(create: (context) => UserBloc()),
         ],
         child: MaterialApp(
           // home: SettingsScreen(),
