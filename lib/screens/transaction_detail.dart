@@ -1,5 +1,3 @@
-import 'package:coin_ease/bloc/homePage_bloc/home_page_bloc.dart';
-import 'package:coin_ease/bloc/homePage_bloc/home_page_event.dart';
 import 'package:coin_ease/bloc/transaction_detail_bloc/repo.dart';
 import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_bloc.dart';
 import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_event.dart';
