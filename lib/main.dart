@@ -2,6 +2,7 @@ import 'package:coin_ease/bloc/transactions/transaction_bloc.dart';
 import 'package:coin_ease/bloc/user/user_bloc.dart';
 import 'package:coin_ease/screens/auth/phone_verification.dart';
 import 'package:coin_ease/screens/auth/sign_in.dart';
+import 'package:coin_ease/screens/auth/sign_up.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,12 +29,12 @@ class MyApp extends StatelessWidget {
           BlocProvider<UserBloc>(create: (context) => UserBloc()),
         ],
         child: MaterialApp(
-          // home: SettingsScreen(),
-          home: (FirebaseAuth.instance.currentUser == null)
-              ? const PhoneVerification()
-              : SignIn(
-                  phoneNumber: FirebaseAuth.instance.currentUser?.phoneNumber),
-          debugShowCheckedModeBanner: false,
+          // home: SignUpDetails(cu),
+          // home: (FirebaseAuth.instance.currentUser == null)
+          //     ? const PhoneVerification()
+          //     : SignIn(
+          //         phoneNumber: FirebaseAuth.instance.currentUser?.phoneNumber),
+          // debugShowCheckedModeBanner: false,
         ));
   }
 }
