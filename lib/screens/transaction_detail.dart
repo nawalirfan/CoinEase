@@ -1,9 +1,16 @@
+import 'package:coin_ease/bloc/homePage_bloc/home_page_bloc.dart';
+import 'package:coin_ease/bloc/homePage_bloc/home_page_event.dart';
+import 'package:coin_ease/bloc/transaction_detail_bloc/repo.dart';
+import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_bloc.dart';
+import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_event.dart';
+import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_state.dart';
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/account_model.dart';
 import 'package:coin_ease/models/transaction_model.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/services/user_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TransactionDetail extends StatefulWidget {
   final TransactionModel transaction;
@@ -15,6 +22,7 @@ class TransactionDetail extends StatefulWidget {
 }
 
 class _TransactionDetailState extends State<TransactionDetail> {
+  final transactionDetail_Bloc _ListBloc = transactionDetail_Bloc();
   late UserModel? accountDetails;
 
   Future<void> initializeData() async {
@@ -30,16 +38,34 @@ class _TransactionDetailState extends State<TransactionDetail> {
   @override
   void initState() {
     super.initState();
+    _loadData();
+    transactionDetail_Repository().getList();
   }
 
+  Future<void> _loadData() async {
+    _ListBloc.add(LoadDataEvents());
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+      appBar: AppBar(
           backgroundColor: colors['primary'],
           title: Text(
               widget.transaction.isDebit ? 'Money Debited' : 'Money Credited'),
         ),
+      body: _buildBody(),
+    );
+  }
+    Widget _buildBody() {
+    return BlocBuilder<transactionDetail_Bloc, transactionDetail_State>(
+      bloc: _ListBloc,
+      builder: (context, state) {
+        if (state is transaction_loadingState) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is transaction_LoadedState) {
+          return  Scaffold
+    (
+        
         body: FutureBuilder(
             future: initializeData(),
             builder: ((context, snapshot) {
@@ -210,5 +236,15 @@ class _TransactionDetailState extends State<TransactionDetail> {
                 );
               }
             })));
+          
+        } else if (state is transaction_ErrorState) {
+          return Center(
+            child: Text(state.error),
+          );
+        } else {
+          return const Center(child: Text('Unknown state'));
+        }
+      },
+    );
   }
 }
