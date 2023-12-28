@@ -1,7 +1,7 @@
 import 'package:coin_ease/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:coin_ease/screens/auth/sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart'; // Import FirebaseAuth
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -20,7 +20,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
   CollectionReference userCollection =
       FirebaseFirestore.instance.collection('users');
-  final FirebaseAuth _auth = FirebaseAuth.instance; // Firebase Authentication
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<User?> getCurrentUser() async {
     return _auth.currentUser;
@@ -35,8 +35,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           .where('phoneNumber', isEqualTo: currentUser.phoneNumber)
           .get();
           var userDocument = querySnapshot.docs.first;
-
-        // var userDocument = await userCollection.doc(currentUser.uid).get();
 
         if (userDocument.exists) {
           String currentUserCNIC = userDocument['cnic'];
@@ -111,7 +109,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       fillColor: Colors.white,
                       errorText: errors && cnicController.text.isEmpty
                           ? 'CNIC number is required'
-                          : null,
+                          : errors
+                              ? 'Invalid CNIC number'
+                              : null,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
@@ -210,12 +210,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             await forgetPassword(
                                 cnicController.text, passwordController.text);
                             if (errors) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('Invalid CNIC number'),
-                                  duration: Duration(seconds: 2),
-                                ),
-                              );
+                              // Show error below the CNIC TextField
+                              setState(() {
+                                errors = true;
+                              });
                             }
                           }
                         }

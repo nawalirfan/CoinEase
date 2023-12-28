@@ -113,8 +113,8 @@ class _HomePageState extends State<HomePage> {
                                     },
                                     child: Icon(
                                         obscureText
-                                            ? Icons.remove_red_eye_outlined
-                                            : Icons.visibility_off_outlined,
+                                            ? Icons.visibility_off_outlined
+                                        : Icons.remove_red_eye_outlined,
                                         color: Colors.black
                                         // color: Color.fromARGB(255, 116, 93, 122),
                                         ),

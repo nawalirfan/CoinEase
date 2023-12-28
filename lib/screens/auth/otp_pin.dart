@@ -5,11 +5,12 @@ import 'package:coin_ease/screens/auth/sign_up.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:pinput/pinput.dart';
 
-class OtpPin extends StatefulWidget {
+class OtpPin extends StatefulWidget 
+{
   final String phoneNumber;
-  const OtpPin({super.key, required this.phoneNumber});
+
+  const OtpPin({Key? key, required this.phoneNumber}) : super(key: key);
 
   @override
   State<OtpPin> createState() => _OtpPinState();
@@ -17,7 +18,10 @@ class OtpPin extends StatefulWidget {
 
 class _OtpPinState extends State<OtpPin> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final TextEditingController _pinEditingController = TextEditingController();
+  final List<TextEditingController> _otpControllers = List.generate(
+    6,
+    (index) => TextEditingController(),
+  );
   bool wrongOTP = false;
   bool loading = false;
 
@@ -29,43 +33,21 @@ class _OtpPinState extends State<OtpPin> {
     });
     if (isUserSignedUp) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => SignIn()));
+        context,
+        MaterialPageRoute(builder: (context) => SignIn()),
+      );
     } else {
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  SignUpDetails(phoneNumber: widget.phoneNumber)));
+        context,
+        MaterialPageRoute(
+          builder: (context) => SignUpDetails(phoneNumber: widget.phoneNumber),
+        ),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-        fontSize: 20,
-        color: Color.fromRGBO(30, 60, 87, 1),
-        fontWeight: FontWeight.w600,
-      ),
-      decoration: BoxDecoration(
-        border: Border.all(color: Color.fromARGB(255, 233, 198, 241)),
-        borderRadius: BorderRadius.circular(20),
-      ),
-    );
-
-    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Color.fromARGB(255, 117, 95, 122)),
-      borderRadius: BorderRadius.circular(20),
-    );
-
-    final submittedPinTheme = defaultPinTheme.copyWith(
-      decoration: defaultPinTheme.decoration?.copyWith(
-        color: const Color.fromRGBO(234, 239, 243, 1),
-      ),
-    );
-
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
@@ -87,22 +69,47 @@ class _OtpPinState extends State<OtpPin> {
                   style: TextStyle(fontSize: 16)),
               const SizedBox(height: 20),
               Padding(
-                padding: EdgeInsets.only(right: 30, left: 30),
-                child: Pinput(
-                  length: 6,
-                  defaultPinTheme: defaultPinTheme,
-                  focusedPinTheme: focusedPinTheme,
-                  submittedPinTheme: submittedPinTheme,
-                  pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                  showCursor: true,
-                  controller: _pinEditingController,
-                  onChanged: (value) {
-                    if (wrongOTP) {
-                      setState(() {
-                        wrongOTP = false;
-                      });
-                    }
-                  },
+                padding: const EdgeInsets.only(right: 30, left: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: List.generate(
+                    6,
+                    (index) => SizedBox(
+                      width: 50,
+                      child: TextFormField(
+                        controller: _otpControllers[index],
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        //obscureText: true,
+                        onChanged: (value) 
+                        {
+                          if (wrongOTP) {
+                            setState(() {
+                              wrongOTP = false;
+                            });
+                          }
+                          if (index < 5 && value.isNotEmpty) 
+                          {
+                            FocusScope.of(context).nextFocus();
+                          }
+                        },
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Colors.black,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               if (wrongOTP)
@@ -123,29 +130,32 @@ class _OtpPinState extends State<OtpPin> {
                   : ElevatedButton(
                       onPressed: () async {
                         try {
-                          setState(() {
-                            loading = true;
-                          });
-                          String code = _pinEditingController.text;
+                          String code = _otpControllers
+                              .map((controller) => controller.text)
+                              .join();
                           PhoneAuthCredential credential =
                               PhoneAuthProvider.credential(
                             verificationId: PhoneVerification.verify,
                             smsCode: code,
                           );
                           await auth.signInWithCredential(credential);
+                          setState(() {
+                            loading = false;
+                          });
                           _handleVerify();
                         } catch (e) {
                           print('wrong otp: ${e}');
                           setState(() {
                             wrongOTP = true;
+                            loading = false;
                           });
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: colors['primary']),
-                      child: const Text(
-                        'Verify Phone Number',
-                      ))
+                        backgroundColor: colors['primary'],
+                      ),
+                      child: const Text('Verify Phone Number'),
+                    ),
             ],
           ),
         ),

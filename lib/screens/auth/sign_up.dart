@@ -130,7 +130,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             decoration: InputDecoration(
                                 filled: true,
                                 contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 10),
+                                    const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -148,7 +148,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             decoration: InputDecoration(
                                 filled: true,
                                 contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 10),
+                                    const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -165,7 +165,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             decoration: InputDecoration(
                                 filled: true,
                                 contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 10),
+                                    const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -182,7 +182,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             decoration: InputDecoration(
                                 filled: true,
                                 contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 10),
+                                    const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -200,7 +200,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             decoration: InputDecoration(
                                 filled: true,
                                 contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 10),
+                                    const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -217,7 +217,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             decoration: InputDecoration(
                                 filled: true,
                                 contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 10),
+                                    const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 errorText:
                                     passError ? 'Passwords dont match' : null,

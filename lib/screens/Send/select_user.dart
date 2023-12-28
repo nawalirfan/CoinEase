@@ -44,7 +44,7 @@ class _SendMoneyState extends State<SendMoney> {
               controller: accController,
               decoration: InputDecoration(
                   filled: true,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  contentPadding: const EdgeInsets.only(left: 15),
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -54,6 +54,7 @@ class _SendMoneyState extends State<SendMoney> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
+                
                   onPressed: () async {
                     userService
                         .getUsers(accController.text)

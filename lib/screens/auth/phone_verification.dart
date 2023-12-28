@@ -15,7 +15,8 @@ class PhoneVerification extends StatefulWidget
   State<PhoneVerification> createState() => _PhoneVerificationState();
 }
 
-class _PhoneVerificationState extends State<PhoneVerification> {
+class _PhoneVerificationState extends State<PhoneVerification> 
+{
   TextEditingController countrycode = TextEditingController();
   var phone = "";
 
@@ -73,6 +74,9 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                       },
                       codeAutoRetrievalTimeout: (String verificationId) {},
                     );
+                   
+                                      //Navigator.pushNamed(context, '/OtpPin');
+                                  
                     Navigator.push(
                       context,
                       MaterialPageRoute(

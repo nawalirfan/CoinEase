@@ -39,7 +39,7 @@ class EnterRequestAmount extends StatelessWidget {
               ],
               decoration: InputDecoration(
                   filled: true,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  contentPadding: const EdgeInsets.only(left: 15),
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -55,7 +55,7 @@ class EnterRequestAmount extends StatelessWidget {
               controller: message,
               decoration: InputDecoration(
                   filled: true,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  contentPadding: const EdgeInsets.only(left: 15),
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),

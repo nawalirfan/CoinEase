@@ -103,7 +103,7 @@ class _TransactionDetailState extends State<TransactionDetail> {
                             width: 90,
                           ),
                           Text(
-                            '${widget.transaction.isDebit ? '-' : '+'} Rs. ${widget.transaction.amount}',
+                            ' Rs. ${widget.transaction.isDebit ? '-' : '+'} ${widget.transaction.amount}',
                             style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 40,

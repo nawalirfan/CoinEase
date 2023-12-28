@@ -10,7 +10,7 @@ class FirebaseUserRepo implements UserRepository {
   final CollectionReference usersCollection = FirebaseFirestore.instance.collection('users');
 
   FirebaseUserRepo({
-    FirebaseAuth.FirebaseAuth? firebaseAuth,
+    FirebaseAuth.FirebaseAuth? firebaseAuth, required FirebaseFirestore firebaseFirestore,
   }) : _firebaseAuth = firebaseAuth ?? FirebaseAuth.FirebaseAuth.instance;
 
   @override
