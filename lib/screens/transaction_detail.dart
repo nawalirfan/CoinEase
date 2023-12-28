@@ -1,4 +1,4 @@
-import 'package:coin_ease/bloc/transaction_detail_bloc/repo.dart';
+import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_repo.dart';
 import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_bloc.dart';
 import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_event.dart';
 import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_state.dart';
@@ -68,7 +68,7 @@ class _TransactionDetailState extends State<TransactionDetail> {
             future: initializeData(),
             builder: ((context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
+                return const Center(child: CircularProgressIndicator());
               } else {
                 UserAccount? sender = widget.transaction.isDebit
                     ? widget.account

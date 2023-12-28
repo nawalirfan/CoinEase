@@ -1,3 +1,7 @@
+import 'package:coin_ease/bloc/HomePage_bloc/homePage_repo.dart';
+import 'package:coin_ease/bloc/HomePage_bloc/home_page_bloc.dart';
+import 'package:coin_ease/bloc/HomePage_bloc/home_page_event.dart';
+import 'package:coin_ease/bloc/HomePage_bloc/home_page_state.dart';
 import 'package:coin_ease/bloc/transactions/transaction_bloc.dart';
 import 'package:coin_ease/bloc/transactions/transaction_event.dart';
 import 'package:coin_ease/colors.dart';
@@ -23,6 +27,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final HomePage_Bloc _ListBloc = HomePage_Bloc();
   final UserService _userService = UserService();
   TransactionBloc? _transactionBloc;
   String? loggedInUserId;
@@ -31,6 +36,20 @@ class _HomePageState extends State<HomePage> {
   List<TransactionModel>? transactionHistory = [];
 
   bool obscureText = false;
+
+ @override
+  void initState() {
+    super.initState();
+    _loadData();
+    HomePage_Repository().getList();
+    Future.delayed(Duration.zero, () {
+      _initializeData();
+    });
+  }
+
+  Future<void> _loadData() async {
+    _ListBloc.add(LoadHomePageDataEvent());
+  }
 
   Future<void> _initializeData() async {
     try {
@@ -49,18 +68,17 @@ class _HomePageState extends State<HomePage> {
     _transactionBloc?.add(LoadTransactionEvent(loggedInUser));
   }
 
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration.zero, () {
-      _initializeData();
-    });
-  }
-
-  @override
+ @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
+    return  BlocBuilder<HomePage_Bloc, HomePage_state>(
+      bloc: _ListBloc,
+      builder: (context, state) {
+        if (state is HomePage_LoadingState) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is HomePage_LoadedState) {
+          return Scaffold(
+        body: SafeArea
+        (
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(20),
@@ -310,5 +328,16 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         bottomNavigationBar: BNavBar(index: 1, user: loggedInUser));
+            
+          
+        } else if (state is HomePage_ErrorState) {
+          return Center(
+            child: Text(state.error),
+          );
+        } else {
+          return const Center(child: Text('Unknown state'));
+        }
+      },
+    );
   }
 }

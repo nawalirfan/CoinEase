@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:coin_ease/bloc/transactions/repo.dart';
+import 'package:coin_ease/bloc/transactions/transaction_repo.dart';
 import 'package:coin_ease/bloc/transactions/transaction_event.dart';
 import 'package:coin_ease/bloc/transactions/transaction_state.dart';
 import 'package:coin_ease/models/transaction_model.dart';

@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/bloc/MyAccount_bloc/my_account_event.dart';
 import 'package:coin_ease/bloc/MyAccount_bloc/my_account_state.dart';
-import 'package:coin_ease/bloc/MyAccount_bloc/repo.dart';
+import 'package:coin_ease/bloc/MyAccount_bloc/mu_account-repo.dart';
 
 class AccountDetail_Bloc extends Bloc<AccountDetailEvent, AccountDetail_State> {
   final AccountDetail_Repository _repository = AccountDetail_Repository();
