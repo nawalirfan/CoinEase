@@ -68,7 +68,8 @@ class _SignInPageState extends State<SignInPage> {
       },
       child: Scaffold(
         body: Center(
-          child: ListView(
+          child: ListView
+          (
             shrinkWrap: true,
             children: [
               Column(

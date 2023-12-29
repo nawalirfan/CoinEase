@@ -4,6 +4,7 @@ import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/transaction_model.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/transaction_detail.dart';
+import 'package:coin_ease/test_widgets/transactionList_Tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,51 +36,28 @@ class TransactionsList extends StatelessWidget {
 
   Widget _buildList(List<TransactionModel>? transactions) {
     return ListView.builder(
-        shrinkWrap: true,
-        itemCount: transactions!.length > count ? count : transactions.length,
-        itemBuilder: (context, index) {
-          TransactionModel transaction = transactions[index];
-          return Container(
-            margin: const EdgeInsets.only(top: 5, bottom: 5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: colors['secondary'],
-            ),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => TransactionDetail(
-                            transaction: transaction,
-                            account: user!.account,
-                          )),
-                );
-              },
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: colors['primary'],
-                  child: Text(                    
-                    (transaction.accountTo['title'] ?? '')
-                        .substring(0, 1)
-                        .toUpperCase(),
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                ),                
-                title: Text(transaction.accountTo['title'] ?? ''),
-                subtitle: Text(transaction.dateTime.toDate().toString()),
-                trailing: Text(
-                  '${transaction.isDebit ? '-' : '+'} Rs. ${transaction.amount}',
-                  style: TextStyle(
-                      color: transaction.isDebit
-                          ? const Color.fromARGB(255, 199, 33, 21)
-                          : const Color.fromARGB(255, 9, 129, 79),
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500),
+      shrinkWrap: true,
+      itemCount: transactions!.length > count ? count : transactions.length,
+      itemBuilder: (context, index) {
+        TransactionModel transaction = transactions[index];
+        return TransactionTile(
+          title: transaction.accountTo['title'] ?? '',
+          amount: transaction.amount,
+          isDebit: transaction.isDebit,
+          dateTime: transaction.dateTime.toDate().toString(),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TransactionDetail(
+                  transaction: transaction,
+                  account: user!.account,
                 ),
               ),
-            ),
-          );
-        });
+            );
+          },
+        );
+      },
+    );
   }
 }

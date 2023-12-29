@@ -75,8 +75,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ListView(
+      body: Center
+      (
+        child: ListView
+        (
           shrinkWrap: true,
           children: [
             Column(
