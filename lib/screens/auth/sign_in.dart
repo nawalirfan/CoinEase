@@ -3,6 +3,7 @@ import 'package:coin_ease/bloc/signin_bloc/sign_in_event.dart';
 import 'package:coin_ease/bloc/signin_bloc/sign_in_state.dart';
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/services/auth_service.dart';
+import 'package:coin_ease/test_widgets/signIn/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -135,23 +136,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                   const SizedBox(height: 20.0),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/Forget_Password');
-                          },
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                                fontSize: 17, color: AppColors.primaryColor),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  AuthLinksRow()
                 ],
               ),
             ],

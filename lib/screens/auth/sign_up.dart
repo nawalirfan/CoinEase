@@ -1,3 +1,4 @@
+import 'package:coin_ease/test_widgets/signUp/signUpForm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coin_ease/bloc/signup_bloc/sign_up_bloc.dart';
@@ -102,123 +103,15 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.primaryColor,
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          if (errors)
-                            const Text(
-                              'Please fill all the fields correctly',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.red,
-                              ),
-                            ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            'Name: ',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          const SizedBox(height: 5),
-                          TextField(
-                            controller: nameController,
-                            decoration: InputDecoration(
-                                filled: true,
-                                contentPadding: const EdgeInsets.only(left: 10),
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                )),
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            'CNIC Number: ',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          const SizedBox(height: 5),
-                          TextField(
-                            controller: cnicController,
-                            maxLength: 13,
-                            decoration: InputDecoration(
-                                filled: true,
-                                contentPadding: const EdgeInsets.only(left: 10),
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                )),
-                          ),
-                          const SizedBox(height: 5),
-                          const Text(
-                            'Date of Issuance (CNIC): ',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          const SizedBox(height: 5),
-                          TextField(
-                            controller: dateController,
-                            decoration: InputDecoration(
-                                filled: true,
-                                contentPadding: const EdgeInsets.only(left: 10),
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                )),
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            'Mother\'s Name: ',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          const SizedBox(height: 5),
-                          TextField(
-                            controller: mNameController,
-                            decoration: InputDecoration(
-                                filled: true,
-                                contentPadding: const EdgeInsets.only(left: 10),
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                )),
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            'Password: ',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          const SizedBox(height: 5),
-                          TextField(
-                            obscureText: true,
-                            controller: passwordController,
-                            decoration: InputDecoration(
-                                filled: true,
-                                contentPadding: const EdgeInsets.only(left: 10),
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                )),
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            'Confirm Password: ',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          const SizedBox(height: 5),
-                          TextField(
-                            obscureText: true,
-                            controller: cPasswordController,
-                            decoration: InputDecoration(
-                                filled: true,
-                                contentPadding: const EdgeInsets.only(left: 10),
-                                fillColor: Colors.white,
-                                errorText:
-                                    passError ? 'Passwords dont match' : null,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                )),
+                          SignUpForm(  //widget
+                            nameController: nameController,
+                            cnicController: cnicController,
+                            dateController: dateController,
+                            mNameController: mNameController,
+                            passwordController: passwordController,
+                            cPasswordController: cPasswordController,
+                            errors: errors,
+                            passError: passError,
                           ),
                           const SizedBox(height: 40),
                           SizedBox(

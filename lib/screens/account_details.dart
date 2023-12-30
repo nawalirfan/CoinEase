@@ -191,6 +191,7 @@ class _AccountDetailState extends State<AccountDetail> {
             ),
           ],
         ),
+        //const SizedBox(height: 20),
         Column(
           children: [
             Container(
@@ -225,15 +226,16 @@ class _AccountDetailState extends State<AccountDetail> {
                 ],
               ),
             ),
+            //const SizedBox(height: 20),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 35),
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: const Color.fromARGB(255, 190, 189, 189),
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
               ),
               child: Column(

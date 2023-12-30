@@ -19,7 +19,7 @@ class TransactionDetailColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 270,
+      height: 300,
       decoration: BoxDecoration(
         color: AppColors.primaryColor.shade900,
         borderRadius: const BorderRadius.only(
@@ -43,10 +43,10 @@ class TransactionDetailColumn extends StatelessWidget {
             width: 90,
           ),
           Text(
-            ' Rs. ${transaction.isDebit ? '-' : '+'} ${transaction.amount.toStringAsFixed(3)} PKR',
+            ' Rs. ${transaction.isDebit ? '-' : '+'} ${transaction.amount.toStringAsFixed(2)} PKR',
             style: const TextStyle(
               color: Colors.black,
-              fontSize: 40,
+              fontSize: 35,
               fontWeight: FontWeight.bold,
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/user_model.dart';
+import 'package:coin_ease/screens/home_page.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:coin_ease/services/transaction_service.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,8 @@ class ConfirmPayment extends StatefulWidget {
   final UserModel user;
   final double amount;
 
-  const ConfirmPayment({super.key, required this.amount, required this.user});
+  const ConfirmPayment({Key? key, required this.amount, required this.user})
+      : super(key: key);
 
   @override
   State<ConfirmPayment> createState() => _ConfirmPaymentState();
@@ -21,7 +23,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: colors['primary'],
         title: const Text('Send Money'),
       ),
       body: Column(
@@ -42,11 +44,11 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
             padding: const EdgeInsets.all(20),
-            height: 200,
+            height: 300,
             width: 400,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: AppColors.primaryColor.shade900,
+              color: colors['secondary'],
             ),
             child: Column(
               children: [
@@ -81,7 +83,6 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () async {
-                
                 AuthService auth = AuthService();
                 UserModel? sender = await auth.getLoggedInUser();
                 TransactionService transactionService = TransactionService();
@@ -96,11 +97,16 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
                     errorMessage = 'Transaction failed: Not enough funds.';
                   });
                 } else {
-                  Navigator.pushNamed(context, '/HomePage');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryColor,
+                padding: EdgeInsets.symmetric( vertical: 15), // Adjust the vertical padding
+                minimumSize: Size(double.infinity, 50),
+                backgroundColor: colors['primary'],
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),

@@ -1,4 +1,3 @@
-
 import 'package:coin_ease/bloc/get_users_bloc/sendMoney_repo.dart';
 import 'package:coin_ease/bloc/get_users_bloc/send_money_bloc.dart';
 import 'package:coin_ease/bloc/get_users_bloc/send_money_event.dart';
@@ -18,7 +17,7 @@ class SendMoney extends StatefulWidget {
 }
 
 class _SendMoneyState extends State<SendMoney> {
-  final SendMoney_Bloc _getUsersBloc = SendMoney_Bloc();
+  final SendMoney_Bloc _sendMoneyBloc = SendMoney_Bloc();
   List<UserModel>? userList;
 
   void updateState(result) {
@@ -35,14 +34,14 @@ class _SendMoneyState extends State<SendMoney> {
   }
 
   Future<void> _loadData() async {
-    _getUsersBloc.add(LoadDataEvent());
+    _sendMoneyBloc.add(LoadDataEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: colors['primary'],
         title: const Text('Send Money'),
       ),
       body: _buildBody(),
@@ -53,7 +52,7 @@ class _SendMoneyState extends State<SendMoney> {
     final UserService userService = UserService();
     TextEditingController accController = TextEditingController();
     return BlocBuilder<SendMoney_Bloc, SendMoney_state>(
-      bloc: _getUsersBloc,
+      bloc: _sendMoneyBloc,
       builder: (context, state) {
         if (state is SendMoney_LoadingState) {
           return const Center(child: CircularProgressIndicator());
@@ -91,7 +90,9 @@ class _SendMoneyState extends State<SendMoney> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primaryColor,
+                          padding: EdgeInsets.symmetric( vertical: 15), // Adjust the vertical padding
+                          minimumSize: Size(double.infinity, 50), // Set the minimum width and height
+                          backgroundColor: colors['primary'],
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           )),
