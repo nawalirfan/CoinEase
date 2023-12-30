@@ -65,7 +65,8 @@ class _RequestsState extends State<Requests> {
         } else if (state is RequestLoadedState) {
           return reqList!.isEmpty
           ? const Center(
-              child: CircularProgressIndicator()
+              //child: CircularProgressIndicator()
+              child: Text('No Requests Found'),
             )
           : ListView.builder(
               shrinkWrap: true,
@@ -104,7 +105,7 @@ class _RequestsState extends State<Requests> {
                       trailing: Text(
                         ' Rs. ${request.amount}',
                         style: const TextStyle(
-                            color: const Color.fromARGB(255, 9, 129, 79),
+                            color:   Color.fromARGB(255, 9, 129, 79),
                             fontSize: 15,
                             fontWeight: FontWeight.w500),
                       ),

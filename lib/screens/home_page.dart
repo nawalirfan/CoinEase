@@ -100,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 );
+                                //Navigator.push(context, '/AccountDetail' as Route<Object?>);
                               },
                               child: UserInfoWidget( //widget
                                 userName: loggedInUser?.name,
@@ -115,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         const SizedBox(height: 30),
-                        ActionButtonsRow(),
+                        ActionButtonsRow(),  //widget
                         const SizedBox(height: 30),
                         Column(
                           children: [
@@ -144,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                                                     user: loggedInUser,
                                                     transactionBloc:
                                                         _transactionBloc!,
-                                                  )), // Replace TransactionsAll with your actual screen/widget
+                                                  )),
                                         );
                                       },
                                       child: Row(

@@ -32,17 +32,19 @@ class _OtpPinState extends State<OtpPin> {
       loading = false;
     });
     if (isUserSignedUp) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => SignIn()),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => SignIn()),
+      // );
+      Navigator.pushNamed(context, '/SignIn'); 
     } else {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => SignUpDetails(phoneNumber: widget.phoneNumber),
-        ),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => SignUpDetails(phoneNumber: widget.phoneNumber),
+      //   ),
+      // );
+      Navigator.pushNamed(context, '/SignUp'); 
     }
   }
 

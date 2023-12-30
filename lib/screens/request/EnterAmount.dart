@@ -76,10 +76,11 @@ class EnterRequestAmount extends StatelessWidget {
                         content: Text(success
                             ? 'Request Successfully Sent!'
                             : 'Request failed')));
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomePage()));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const HomePage()));
+                    Navigator.pushNamed(context, '/HomePage');
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: colors['primary'],

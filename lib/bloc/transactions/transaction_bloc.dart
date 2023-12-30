@@ -6,9 +6,9 @@ import 'package:coin_ease/models/transaction_model.dart';
 import 'package:flutter/foundation.dart';
 
 class TransactionBloc extends Bloc<TransactionEvent, Transaction_State> {
-  final Transaction_Repository _repository = Transaction_Repository();
+  final Transaction_Repository _repository ;
 
-  TransactionBloc() : super(LoadingTransactionState()) {
+  TransactionBloc(this._repository) : super(LoadingTransactionState()) {
     on<LoadTransactionEvent>((event, emit) async {
       emit(LoadingTransactionState());
       try {

@@ -24,10 +24,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void _handleLogout() async {
     try {
       await _auth.signOut();
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => PhoneVerification()),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => PhoneVerification()),
+      // );
+      Navigator.pushNamed(context, '/Phone_verification');
+
     } catch (e) {
       print('Error during logout: $e');
     }

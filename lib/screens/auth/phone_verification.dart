@@ -2,7 +2,7 @@
 
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/screens/auth/otp_pin.dart';
-import 'package:coin_ease/test_widgets/phone_verification_image.dart';
+import 'package:coin_ease/test_widgets/phone_verification_TextFields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -65,8 +65,8 @@ class _PhoneVerificationState extends State<PhoneVerification>
                       codeAutoRetrievalTimeout: (String verificationId) {},
                     );
                    
-                                      //Navigator.pushNamed(context, '/OtpPin');
-                                  
+                                    
+                    //Navigator.pushNamed(context, '/OtpPin');       
                     Navigator.push(
                       context,
                       MaterialPageRoute(

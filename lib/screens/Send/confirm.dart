@@ -97,10 +97,11 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
                     errorMessage = 'Transaction failed: Not enough funds.';
                   });
                 } else {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => HomePage()),
+                  // );
+                  Navigator.pushNamed(context, '/HomePage');
                 }
               },
               style: ElevatedButton.styleFrom(

@@ -147,7 +147,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                             trailing: Text(
                               ' Rs. ${request.amount}',
                               style: const TextStyle(
-                                color: const Color.fromARGB(255, 9, 129, 79),
+                                color:  Color.fromARGB(255, 9, 129, 79),
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
                               ),

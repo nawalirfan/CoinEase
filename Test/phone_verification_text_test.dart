@@ -1,4 +1,4 @@
-import 'package:coin_ease/test_widgets/phone_verification_image.dart';
+import 'package:coin_ease/test_widgets/phone_verification_TextFields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

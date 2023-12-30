@@ -46,6 +46,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
             print('Password updated successfully');
 
+            // ignore: use_build_context_synchronously
             Navigator.push(
               context,
               MaterialPageRoute(
