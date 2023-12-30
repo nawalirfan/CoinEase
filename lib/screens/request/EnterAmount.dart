@@ -18,7 +18,7 @@ class EnterRequestAmount extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colors['primary'],
+        backgroundColor: AppColors.primaryColor,
         title: const Text('Request Money'),
       ),
       body: Container(
@@ -83,7 +83,7 @@ class EnterRequestAmount extends StatelessWidget {
                     Navigator.pushNamed(context, '/HomePage');
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: colors['primary'],
+                      backgroundColor: AppColors.primaryColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       )),

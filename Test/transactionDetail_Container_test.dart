@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coin_ease/test_widgets/transactionDetail_container.dart';
+import 'package:coin_ease/widgets/transactionDetail_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:coin_ease/models/account_model.dart';
@@ -84,7 +84,8 @@ void main() {
     expect(find.text(receiver.bankName!), findsOneWidget);
   });
 
-  testWidgets('TransactionDetailsContainer should display transaction reference number',
+  testWidgets(
+      'TransactionDetailsContainer should display transaction reference number',
       (WidgetTester tester) async {
     UserAccount sender = UserAccount(
       accountNumber: '123456789',

@@ -1,11 +1,7 @@
-import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_bloc.dart';
-import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_event.dart';
-import 'package:coin_ease/bloc/Sign_In_Bloc/sign_in_state.dart';
+import 'package:coin_ease/bloc/signin_bloc/sign_in_bloc.dart';
+import 'package:coin_ease/bloc/signin_bloc/sign_in_event.dart';
+import 'package:coin_ease/bloc/signin_bloc/sign_in_state.dart';
 import 'package:coin_ease/colors.dart';
-import 'package:coin_ease/screens/admin/dashboard.dart';
-import 'package:coin_ease/screens/auth/Forget_password.dart';
-import 'package:coin_ease/screens/home_page.dart';
-import 'package:coin_ease/screens/auth/phone_verification.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SignIn extends StatelessWidget {
   final String? phoneNumber;
 
-  const SignIn({Key? key, this.phoneNumber = ''}) : super(key: key);
+  const SignIn({super.key, this.phoneNumber = ''});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +23,7 @@ class SignIn extends StatelessWidget {
 class SignInPage extends StatefulWidget {
   final String? phoneNumber;
 
-  const SignInPage({Key? key, this.phoneNumber}) : super(key: key);
+  const SignInPage({super.key, this.phoneNumber});
 
   @override
   _SignInPageState createState() => _SignInPageState();
@@ -52,12 +48,8 @@ class _SignInPageState extends State<SignInPage> {
             loading = false;
           });
           if (state.isAdmin) {
-            // Navigator.push(context,
-            //     MaterialPageRoute(builder: (context) => const Dashboard()));
-             Navigator.pushNamed(context, '/Dashboard');
+            Navigator.pushNamed(context, '/Dashboard');
           } else {
-            // Navigator.push(context,
-            //     MaterialPageRoute(builder: (context) => const HomePage()));
             Navigator.pushNamed(context, '/HomePage');
           }
         } else if (state is SignInFailure) {
@@ -70,8 +62,7 @@ class _SignInPageState extends State<SignInPage> {
       },
       child: Scaffold(
         body: Center(
-          child: ListView
-          (
+          child: ListView(
             shrinkWrap: true,
             children: [
               Column(
@@ -85,7 +76,7 @@ class _SignInPageState extends State<SignInPage> {
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: colors['primary'],
+                        color: AppColors.primaryColor,
                       ),
                     ),
                   ),
@@ -133,7 +124,7 @@ class _SignInPageState extends State<SignInPage> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: colors['primary'],
+                          backgroundColor: AppColors.primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
                           ),
@@ -146,53 +137,16 @@ class _SignInPageState extends State<SignInPage> {
                   const SizedBox(height: 20.0),
                   Row(
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 20.0),
-                        child: Text(
-                          "Don't have an account?",
-                          style: TextStyle(
-                              fontSize: 17,
-                              color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
-                      ),
-                      loading
-                          ? const CircularProgressIndicator()
-                          : TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PhoneVerification()),
-                                );
-                            
-                              },
-                              child: Text(
-                                'Sign Up',
-                                style: TextStyle(
-                                    fontSize: 17, color: colors['primary']),
-                              ),
-                            ),
-                    ],
-                  ),
-                  Row(
-                    children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ForgetPassword()),
-                            );
-                             //Navigator.pushNamed(context, '/ForgetPassword');
+                            Navigator.pushNamed(context, '/Forget_Password');
                           },
                           child: Text(
                             'Forgot Password?',
                             style: TextStyle(
-                                fontSize: 17, color: colors['primary']),
+                                fontSize: 17, color: AppColors.primaryColor),
                           ),
                         ),
                       ),

@@ -23,7 +23,7 @@ class TransactionService {
         return TransactionModel(
           id: doc.id,
           account: doc['account'],
-          amount: doc['amount'].toDouble(),
+          amount: double.parse(doc['amount'].toStringAsFixed(3)),
           isDebit: doc['isDebit'],
           accountTo: doc['accountTo'],
           dateTime: doc['dateTime'],
@@ -40,7 +40,7 @@ class TransactionService {
           return TransactionModel(
             id: doc.id,
             account: doc['account'],
-            amount: doc['amount'].toDouble(),
+            amount: double.parse(doc['amount'].toStringAsFixed(3)),
             isDebit: doc['isDebit'],
             accountTo: doc['accountTo'],
             dateTime: doc['dateTime'],
@@ -126,5 +126,4 @@ class TransactionService {
       return false;
     }
   }
-  
 }

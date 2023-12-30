@@ -1,14 +1,11 @@
-
-
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/screens/auth/otp_pin.dart';
-import 'package:coin_ease/test_widgets/PhoneVerification/phone_verification_TextFields.dart';
+import 'package:coin_ease/widgets/phone_verification_TextFields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-class PhoneVerification extends StatefulWidget 
-{
+class PhoneVerification extends StatefulWidget {
   const PhoneVerification({super.key});
   static String verify = "";
 
@@ -16,8 +13,7 @@ class PhoneVerification extends StatefulWidget
   State<PhoneVerification> createState() => _PhoneVerificationState();
 }
 
-class _PhoneVerificationState extends State<PhoneVerification> 
-{
+class _PhoneVerificationState extends State<PhoneVerification> {
   TextEditingController countrycode = TextEditingController();
   var phone = "";
 
@@ -64,9 +60,8 @@ class _PhoneVerificationState extends State<PhoneVerification>
                       },
                       codeAutoRetrievalTimeout: (String verificationId) {},
                     );
-                   
-                                    
-                    //Navigator.pushNamed(context, '/OtpPin');       
+
+                    //Navigator.pushNamed(context, '/OtpPin');
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -75,7 +70,7 @@ class _PhoneVerificationState extends State<PhoneVerification>
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: colors['primary']),
+                      backgroundColor: AppColors.primaryColor),
                   child: const Text(
                     'Send OTP',
                   ))

@@ -47,7 +47,7 @@ class _RequestMoneyState extends State<RequestMoney> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colors['primary'],
+        backgroundColor: AppColors.primaryColor,
         title: const Text('Request Money'),
         actions: [
           GestureDetector(
@@ -94,7 +94,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: colors['primary'],
+                    backgroundColor: AppColors.primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -117,7 +117,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                         margin: const EdgeInsets.only(top: 5, bottom: 5),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: colors['secondary'],
+                          color: AppColors.primaryColor.shade900,
                         ),
                         child: GestureDetector(
                           onTap: () {
@@ -133,7 +133,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                           },
                           child: ListTile(
                             leading: CircleAvatar(
-                              backgroundColor: colors['primary'],
+                              backgroundColor: AppColors.primaryColor,
                               child: Text(
                                 (request.reqfrom['title'] ?? '')
                                     .substring(0, 1)
@@ -147,7 +147,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                             trailing: Text(
                               ' Rs. ${request.amount}',
                               style: const TextStyle(
-                                color:  Color.fromARGB(255, 9, 129, 79),
+                                color: Color.fromARGB(255, 9, 129, 79),
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
                               ),

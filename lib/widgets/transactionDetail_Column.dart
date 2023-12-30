@@ -21,7 +21,7 @@ class TransactionDetailColumn extends StatelessWidget {
       width: double.infinity,
       height: 270,
       decoration: BoxDecoration(
-        color: colors['secondary'],
+        color: AppColors.primaryColor.shade900,
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),

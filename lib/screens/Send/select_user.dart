@@ -1,7 +1,8 @@
-import 'package:coin_ease/bloc/SendMoney_bloc/sendMoney_repo.dart';
-import 'package:coin_ease/bloc/SendMoney_bloc/send_money_bloc.dart';
-import 'package:coin_ease/bloc/SendMoney_bloc/send_money_event.dart';
-import 'package:coin_ease/bloc/SendMoney_bloc/send_money_state.dart';
+
+import 'package:coin_ease/bloc/get_users_bloc/sendMoney_repo.dart';
+import 'package:coin_ease/bloc/get_users_bloc/send_money_bloc.dart';
+import 'package:coin_ease/bloc/get_users_bloc/send_money_event.dart';
+import 'package:coin_ease/bloc/get_users_bloc/send_money_state.dart';
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/services/user_service.dart';
@@ -17,7 +18,7 @@ class SendMoney extends StatefulWidget {
 }
 
 class _SendMoneyState extends State<SendMoney> {
-  final SendMoney_Bloc _sendMoneyBloc = SendMoney_Bloc();
+  final SendMoney_Bloc _getUsersBloc = SendMoney_Bloc();
   List<UserModel>? userList;
 
   void updateState(result) {
@@ -34,14 +35,14 @@ class _SendMoneyState extends State<SendMoney> {
   }
 
   Future<void> _loadData() async {
-    _sendMoneyBloc.add(LoadDataEvent());
+    _getUsersBloc.add(LoadDataEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colors['primary'],
+        backgroundColor: AppColors.primaryColor,
         title: const Text('Send Money'),
       ),
       body: _buildBody(),
@@ -52,7 +53,7 @@ class _SendMoneyState extends State<SendMoney> {
     final UserService userService = UserService();
     TextEditingController accController = TextEditingController();
     return BlocBuilder<SendMoney_Bloc, SendMoney_state>(
-      bloc: _sendMoneyBloc,
+      bloc: _getUsersBloc,
       builder: (context, state) {
         if (state is SendMoney_LoadingState) {
           return const Center(child: CircularProgressIndicator());
@@ -90,7 +91,7 @@ class _SendMoneyState extends State<SendMoney> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: colors['primary'],
+                          backgroundColor: AppColors.primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           )),

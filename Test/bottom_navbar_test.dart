@@ -1,4 +1,3 @@
-
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
@@ -33,27 +32,32 @@ void main() {
     expect(find.byType(BottomNavigationBar), findsOneWidget);
   });
 
-  testWidgets('BNavBar should have correct colors', (WidgetTester tester) async {
-  
+  testWidgets('BNavBar should have correct colors',
+      (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
         bottomNavigationBar: BNavBar(index: 1),
       ),
     ));
 
-  
     expect(
-      tester.widget<BottomNavigationBar>(find.byType(BottomNavigationBar)).backgroundColor,
-      colors['secondary'],
+      tester
+          .widget<BottomNavigationBar>(find.byType(BottomNavigationBar))
+          .backgroundColor,
+      AppColors.primaryColor.shade900,
     );
 
     expect(
-      tester.widget<BottomNavigationBar>(find.byType(BottomNavigationBar)).selectedItemColor,
-      colors['primary'],
+      tester
+          .widget<BottomNavigationBar>(find.byType(BottomNavigationBar))
+          .selectedItemColor,
+      AppColors.primaryColor,
     );
 
     expect(
-      tester.widget<BottomNavigationBar>(find.byType(BottomNavigationBar)).unselectedItemColor,
+      tester
+          .widget<BottomNavigationBar>(find.byType(BottomNavigationBar))
+          .unselectedItemColor,
       const Color.fromARGB(255, 105, 104, 105),
     );
   });

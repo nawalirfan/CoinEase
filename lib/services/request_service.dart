@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/models/request_model.dart';
 import 'package:coin_ease/models/user_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class RequestService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -56,13 +55,10 @@ class RequestService {
       DocumentReference fromRef =
           _firestore.collection('users').doc(requestFrom?.id);
       var reqFromDoc = await fromRef.get();
-      // CollectionReference fromRequestRef =
-      //     fromRef.collection('requests');
 
       // receiver's acc
       DocumentReference toRef =
-          _firestore.collection('users').doc(requestTo.id);
-      // var reqToDoc = await toRef.get();
+          _firestore.collection('users').doc(requestTo.id);      
 
       CollectionReference toRequestRef = toRef.collection('requests');
 

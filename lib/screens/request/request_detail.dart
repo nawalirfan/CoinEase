@@ -26,7 +26,7 @@ class _TransactionDetailState extends State<RequestDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: colors['primary'],
+          backgroundColor: AppColors.primaryColor,
           title: const Text('Amount Requested'),
         ),
         body: Column(
@@ -36,7 +36,7 @@ class _TransactionDetailState extends State<RequestDetail> {
               width: double.infinity,
               height: 270,
               decoration: BoxDecoration(
-                color: colors['secondary'],
+                color: AppColors.primaryColor.shade900,
                 borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(30),
                     bottomRight: Radius.circular(30)),
@@ -144,67 +144,72 @@ class _TransactionDetailState extends State<RequestDetail> {
               ),
             ),
             const SizedBox(height: 20),
-   Row(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-    ElevatedButton(
-      onPressed: () async {
-        RequestService req = RequestService();
-        bool deleted = await req.deleteRequest(
-          widget.request.id,
-          widget.user.id,
-        );
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    RequestService req = RequestService();
+                    bool deleted = await req.deleteRequest(
+                      widget.request.id,
+                      widget.user.id,
+                    );
 
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-        );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              deleted
-                  ? 'Request Deleted Successfully!'
-                  : 'Error while deleting request, try again!',
-            ),
-          ),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(255, 192, 106, 99),
-        minimumSize: const Size(150, 50), // Set width and height
-      ),
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text('Delete',), Icon(Icons.delete)],
-      ),
-    ),
-    ElevatedButton(
-      onPressed: () async {
-        UserService service = UserService();
-        UserModel? user =
-            await service.getUserById(widget.request.reqfrom['id']);
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => EnterAmount(user: user!)),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: colors['primary'],
-        minimumSize: const Size(150, 50), // Set width and height
-      ),
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text('Send'),
-          SizedBox(width: 8),
-          Icon(Icons.send),
-        ],
-      ),
-    ),
-  ],
-)
-
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          deleted
+                              ? 'Request Deleted Successfully!'
+                              : 'Error while deleting request, try again!',
+                        ),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 192, 106, 99),
+                    minimumSize: const Size(150, 50), // Set width and height
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Delete',
+                      ),
+                      Icon(Icons.delete)
+                    ],
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    UserService service = UserService();
+                    UserModel? user =
+                        await service.getUserById(widget.request.reqfrom['id']);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EnterAmount(user: user!)),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryColor,
+                    minimumSize: const Size(150, 50), // Set width and height
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Send'),
+                      SizedBox(width: 8),
+                      Icon(Icons.send),
+                    ],
+                  ),
+                ),
+              ],
+            )
           ],
         ));
   }

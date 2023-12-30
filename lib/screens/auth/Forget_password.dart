@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:coin_ease/test_widgets/forget_Password/passwordResetForm.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:coin_ease/widgets/passwordResetForm.dart';
 import 'package:coin_ease/screens/auth/sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,6 +17,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   TextEditingController cnicController = TextEditingController();
   bool passError = false;
   bool errors = false;
+  bool cnicError = false;
 
   CollectionReference userCollection =
       FirebaseFirestore.instance.collection('users');
@@ -47,7 +47,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
             print('Password updated successfully');
 
-            // ignore: use_build_context_synchronously
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -58,6 +57,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             print('CNIC number is invalid for the current user');
             setState(() {
               errors = true;
+              cnicError = true;
             });
           }
         } else {
@@ -78,6 +78,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   Widget build(BuildContext context) {
     return PasswordResetForm(
       forgetPasswordFunction: forgetPassword,
+      cnicError: cnicError,
+
     );
   }
 }

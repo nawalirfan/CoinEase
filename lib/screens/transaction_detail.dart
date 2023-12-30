@@ -7,8 +7,8 @@ import 'package:coin_ease/models/account_model.dart';
 import 'package:coin_ease/models/transaction_model.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/services/user_service.dart';
-import 'package:coin_ease/test_widgets/transactionDetail/transactionDetail_Column.dart';
-import 'package:coin_ease/test_widgets/transactionDetail/transactionDetail_Container.dart';
+import 'package:coin_ease/widgets/transactionDetail_Column.dart';
+import 'package:coin_ease/widgets/transactionDetail_Container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,7 +50,7 @@ class _TransactionDetailState extends State<TransactionDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colors['primary'],
+        backgroundColor: AppColors.primaryColor,
         title: Text(
             widget.transaction.isDebit ? 'Money Debited' : 'Money Credited'),
       ),

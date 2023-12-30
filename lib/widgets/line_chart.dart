@@ -12,8 +12,8 @@ class LineChartGraph extends StatefulWidget {
 
 class _LineChartGraphState extends State<LineChartGraph> {
   List<Color?> gradientColors = [
-    colors['primary'],
-    colors['secondary'],
+    AppColors.primaryColor,
+    AppColors.primaryColor.shade900,
   ];
 
   bool showAvg = false;

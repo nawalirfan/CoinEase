@@ -1,16 +1,14 @@
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/screens/auth/phone_verification.dart';
-import 'package:coin_ease/screens/auth/sign_in.dart';
-import 'package:coin_ease/screens/auth/sign_up.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class OtpPin extends StatefulWidget 
-{
+class OtpPin extends StatefulWidget {
   final String phoneNumber;
 
-  const OtpPin({Key? key, required this.phoneNumber}) : super(key: key);
+  const OtpPin({super.key, required this.phoneNumber});
 
   @override
   State<OtpPin> createState() => _OtpPinState();
@@ -32,19 +30,9 @@ class _OtpPinState extends State<OtpPin> {
       loading = false;
     });
     if (isUserSignedUp) {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => SignIn()),
-      // );
-      Navigator.pushNamed(context, '/SignIn'); 
+      Navigator.pushNamed(context, '/SignIn');
     } else {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => SignUpDetails(phoneNumber: widget.phoneNumber),
-      //   ),
-      // );
-      Navigator.pushNamed(context, '/SignUp'); 
+      Navigator.pushNamed(context, '/SignUp');
     }
   }
 
@@ -77,21 +65,18 @@ class _OtpPinState extends State<OtpPin> {
                   children: List.generate(
                     6,
                     (index) => SizedBox(
-                      width: 50,
+                      width: 45,
                       child: TextFormField(
                         controller: _otpControllers[index],
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.number,
-                        //obscureText: true,
-                        onChanged: (value) 
-                        {
+                        onChanged: (value) {
                           if (wrongOTP) {
                             setState(() {
                               wrongOTP = false;
                             });
                           }
-                          if (index < 5 && value.isNotEmpty) 
-                          {
+                          if (index < 5 && value.isNotEmpty) {
                             FocusScope.of(context).nextFocus();
                           }
                         },
@@ -146,7 +131,9 @@ class _OtpPinState extends State<OtpPin> {
                           });
                           _handleVerify();
                         } catch (e) {
-                          print('wrong otp: ${e}');
+                          if (kDebugMode) {
+                            print('wrong otp: $e');
+                          }
                           setState(() {
                             wrongOTP = true;
                             loading = false;
@@ -154,7 +141,7 @@ class _OtpPinState extends State<OtpPin> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: colors['primary'],
+                        backgroundColor: AppColors.primaryColor,
                       ),
                       child: const Text('Verify Phone Number'),
                     ),

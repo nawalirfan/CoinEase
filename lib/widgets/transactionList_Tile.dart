@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:coin_ease/colors.dart';
 
-class TransactionTile extends StatelessWidget 
-{
+class TransactionTile extends StatelessWidget {
   final String title;
   final double amount;
   final bool isDebit;
@@ -19,28 +18,27 @@ class TransactionTile extends StatelessWidget
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) 
-  {
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(top: 5, bottom: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: colors['secondary'],
+          color: AppColors.primaryColor.shade900,
         ),
         child: ListTile(
           leading: CircleAvatar(
-            backgroundColor: colors['primary'],
+            backgroundColor: AppColors.primaryColor,
             child: Text(
-              (title ?? '').substring(0, 1).toUpperCase(),
+              (title).substring(0, 1).toUpperCase(),
               style: const TextStyle(color: Colors.white),
             ),
           ),
           title: Text(title),
           subtitle: Text(dateTime.toString()), // Adjust if needed
           trailing: Text(
-            '${isDebit ? '-' : '+'} Rs. ${amount}',
+            '${isDebit ? '-' : '+'} Rs. $amount',
             style: TextStyle(
               color: isDebit
                   ? const Color.fromARGB(255, 199, 33, 21)

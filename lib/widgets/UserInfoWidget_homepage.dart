@@ -23,7 +23,7 @@ class UserInfoWidget extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: colors['secondary'],
+        color: AppColors.primaryColor.shade900,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +64,7 @@ class UserInfoWidget extends StatelessWidget {
               Text(
                 obscureText
                     ? '....'
-                    : 'Rs. ${userAccount?.balance?.toStringAsFixed(2) ?? ''}',
+                    : 'Rs. ${userAccount?.balance?.toStringAsFixed(3) ?? ''}',
                 style: const TextStyle(
                   fontSize: 27,
                   fontWeight: FontWeight.bold,

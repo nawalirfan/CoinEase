@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coin_ease/bloc/SendMoney_bloc/sendMoney_repo.dart';
-import 'package:coin_ease/bloc/SendMoney_bloc/send_money_event.dart';
-import 'package:coin_ease/bloc/SendMoney_bloc/send_money_state.dart';
-
-
+import 'package:coin_ease/bloc/get_users_bloc/sendMoney_repo.dart';
+import 'package:coin_ease/bloc/get_users_bloc/send_money_event.dart';
+import 'package:coin_ease/bloc/get_users_bloc/send_money_state.dart';
 
 class SendMoney_Bloc extends Bloc<SendMoney_Event, SendMoney_state> {
   final SendMoney_Repository _repository = SendMoney_Repository();

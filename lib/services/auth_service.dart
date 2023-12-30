@@ -13,7 +13,6 @@ class AuthService {
           .collection('users')
           .where('phoneNumber', isEqualTo: currentUser?.phoneNumber)
           .get();
-      DocumentReference userReference = querySnapshot.docs.first.reference;
       if (querySnapshot.docs.isNotEmpty) {
         Map<String, dynamic> userData = querySnapshot.docs.first.data();
         Map<String, dynamic> accountData = userData['account'];
@@ -70,8 +69,6 @@ class AuthService {
         'account': accountData
       };
 
-      DocumentReference userRef =
-          await FirebaseFirestore.instance.collection('users').add(userData);
       print(userData.toString());
 
       print('user account created!');

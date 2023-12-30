@@ -2,9 +2,9 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coin_ease/bloc/MyAccount_bloc/my_account_event.dart';
+import 'package:coin_ease/bloc/my_account_bloc/my_account_event.dart';
 
-import 'package:coin_ease/bloc/MyAccount_bloc/my_account_state.dart';
+import 'package:coin_ease/bloc/my_account_bloc/my_account_state.dart';
 import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_repo.dart';
 import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_event.dart';
 import 'package:coin_ease/bloc/transaction_detail_bloc/transaction_detail_state.dart';

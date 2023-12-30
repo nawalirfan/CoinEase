@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:coin_ease/colors.dart';
 
 class ActionButtonsRow extends StatelessWidget {
-  const ActionButtonsRow({Key? key}) : super(key: key);
+  const ActionButtonsRow({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +32,10 @@ class ActionButtonsRow extends StatelessWidget {
           label: 'Request',
         ),
         ActionButton(
-          onTap: () {
-            // Add navigation for Bills
-          },
+          onTap: () {},
           icon: Icons.sticky_note_2_outlined,
           label: 'Bills',
         ),
-        // ActionButton(
-        //   onTap: () {
-        //     // Add navigation for Analytics
-        //   },
-        //   icon: Icons.query_stats,
-        //   label: 'Analytics',
-        // ),
       ],
     );
   }
@@ -70,7 +61,7 @@ class ActionButton extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 30,
-            backgroundColor: colors['primary'],
+            backgroundColor: AppColors.primaryColor,
             foregroundColor: Colors.white,
             child: Transform.rotate(
               angle: 330 * 3.1415926535 / 180,

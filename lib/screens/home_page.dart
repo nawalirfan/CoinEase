@@ -1,7 +1,7 @@
-import 'package:coin_ease/bloc/HomePage_bloc/homePage_repo.dart';
-import 'package:coin_ease/bloc/HomePage_bloc/home_page_bloc.dart';
-import 'package:coin_ease/bloc/HomePage_bloc/home_page_event.dart';
-import 'package:coin_ease/bloc/HomePage_bloc/home_page_state.dart';
+import 'package:coin_ease/bloc/homepage_bloc/homePage_repo.dart';
+import 'package:coin_ease/bloc/homepage_bloc/home_page_bloc.dart';
+import 'package:coin_ease/bloc/homepage_bloc/home_page_event.dart';
+import 'package:coin_ease/bloc/homepage_bloc/home_page_state.dart';
 import 'package:coin_ease/bloc/transactions/transaction_bloc.dart';
 import 'package:coin_ease/bloc/transactions/transaction_event.dart';
 import 'package:coin_ease/colors.dart';
@@ -9,12 +9,10 @@ import 'package:coin_ease/models/account_model.dart';
 import 'package:coin_ease/models/transaction_model.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/account_details.dart';
-import 'package:coin_ease/screens/send/select_user.dart';
-import 'package:coin_ease/screens/request/select_user.dart';
 import 'package:coin_ease/screens/transaction_history.dart';
 import 'package:coin_ease/services/user_service.dart';
-import 'package:coin_ease/test_widgets/HomePage/UserInfoWidget_homepage.dart';
-import 'package:coin_ease/test_widgets/HomePage/actionButtonRow_homePage.dart';
+import 'package:coin_ease/widgets/UserInfoWidget_homepage.dart';
+import 'package:coin_ease/widgets/actionButtonRow_homePage.dart';
 import 'package:coin_ease/widgets/bottom_navbar.dart';
 import 'package:coin_ease/widgets/transactionsList.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -100,7 +98,6 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 );
-                                //Navigator.push(context, '/AccountDetail' as Route<Object?>);
                               },
                               child: UserInfoWidget(
                                 //widget
@@ -117,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         const SizedBox(height: 30),
-                        ActionButtonsRow(), //widget
+                        const ActionButtonsRow(),
                         const SizedBox(height: 30),
                         Column(
                           children: [
@@ -149,19 +146,19 @@ class _HomePageState extends State<HomePage> {
                                                   )),
                                         );
                                       },
-                                      child: Row(
+                                      child: const Row(
                                         children: [
                                           Text(
                                             'See all',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18,
-                                                color: colors['primary']),
+                                                color: AppColors.primaryColor),
                                           ),
-                                          const SizedBox(width: 5),
+                                          SizedBox(width: 5),
                                           Icon(
                                             Icons.arrow_forward,
-                                            color: colors['primary'],
+                                            color: AppColors.primaryColor,
                                           )
                                         ],
                                       ),
@@ -169,13 +166,7 @@ class _HomePageState extends State<HomePage> {
                                   ],
                                 )),
                             const SizedBox(height: 10),
-                            // TransactionsList(
-                            //   transactions: transactionHistory,
-                            //   count: 3,
-                            //   account: loggedInUserAccount,
-                            // )
-                            if (loggedInUser !=
-                                null) // Check if loggedInUser is not null
+                            if (loggedInUser != null)
                               BlocProvider<TransactionBloc>(
                                 create: (context) => _transactionBloc!,
                                 child: TransactionsList(

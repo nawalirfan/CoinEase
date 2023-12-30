@@ -6,8 +6,7 @@ import 'package:coin_ease/widgets/transactionsList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TransactionAll extends StatefulWidget 
-{
+class TransactionAll extends StatefulWidget {
   final List<TransactionModel>? transactions;
   final UserModel? user;
   final TransactionBloc transactionBloc;
@@ -18,19 +17,18 @@ class TransactionAll extends StatefulWidget
   State<TransactionAll> createState() => _TransactionAllState();
 }
 
-class _TransactionAllState extends State<TransactionAll> 
-{
+class _TransactionAllState extends State<TransactionAll> {
   @override
   void initState() {
+    super.initState();
     print('init state ${widget.transactions}');
   }
 
   @override
-  Widget build(BuildContext context) 
-  {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colors['primary'],
+        backgroundColor: AppColors.primaryColor,
         title: const Text('Transactions history'),
       ),
       body: Padding(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:coin_ease/bloc/signUp_bloc/sign_up_bloc.dart';
-import 'package:coin_ease/bloc/signUp_bloc/sign_up_event.dart';
-import 'package:coin_ease/bloc/signUp_bloc/sign_up_state.dart';
+import 'package:coin_ease/bloc/signup_bloc/sign_up_bloc.dart';
+import 'package:coin_ease/bloc/signup_bloc/sign_up_event.dart';
+import 'package:coin_ease/bloc/signup_bloc/sign_up_state.dart';
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/auth/sign_in.dart';
@@ -73,7 +73,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
           },
           child: Scaffold(
             appBar: AppBar(
-              backgroundColor: colors['primary'],
+              backgroundColor: AppColors.primaryColor,
               leading: const Icon(Icons.arrow_back),
               title: const Text('Personal Details'),
             ),
@@ -107,7 +107,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
-                              color: colors['primary'],
+                              color: AppColors.primaryColor,
                             ),
                           ),
                           const SizedBox(height: 20),
@@ -129,8 +129,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             controller: nameController,
                             decoration: InputDecoration(
                                 filled: true,
-                                contentPadding:
-                                    const EdgeInsets.only(left: 10),
+                                contentPadding: const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -147,8 +146,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             maxLength: 13,
                             decoration: InputDecoration(
                                 filled: true,
-                                contentPadding:
-                                    const EdgeInsets.only(left: 10),
+                                contentPadding: const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -164,8 +162,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             controller: dateController,
                             decoration: InputDecoration(
                                 filled: true,
-                                contentPadding:
-                                    const EdgeInsets.only(left: 10),
+                                contentPadding: const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -181,8 +178,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             controller: mNameController,
                             decoration: InputDecoration(
                                 filled: true,
-                                contentPadding:
-                                    const EdgeInsets.only(left: 10),
+                                contentPadding: const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -199,8 +195,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                             controller: passwordController,
                             decoration: InputDecoration(
                                 filled: true,
-                                contentPadding:
-                                    const EdgeInsets.only(left: 10),
+                                contentPadding: const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -213,13 +208,11 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                           ),
                           const SizedBox(height: 5),
                           TextField(
-                            
                             obscureText: true,
                             controller: cPasswordController,
                             decoration: InputDecoration(
                                 filled: true,
-                                contentPadding:
-                                    const EdgeInsets.only(left: 10),
+                                contentPadding: const EdgeInsets.only(left: 10),
                                 fillColor: Colors.white,
                                 errorText:
                                     passError ? 'Passwords dont match' : null,
@@ -261,7 +254,7 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                                   // if (state is SignUpSuccess) navigate();
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: colors['primary'],
+                                  backgroundColor: AppColors.primaryColor,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15),
                                   ),

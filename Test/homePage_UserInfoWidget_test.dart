@@ -1,4 +1,4 @@
-import 'package:coin_ease/test_widgets/HomePage/UserInfoWidget_homepage.dart';
+import 'package:coin_ease/widgets/UserInfoWidget_homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:coin_ease/models/account_model.dart';

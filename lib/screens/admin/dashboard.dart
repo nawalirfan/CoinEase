@@ -31,7 +31,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colors['primary'],
+        backgroundColor: AppColors.primaryColor,
         title: const Text('Dashboard'),
       ),
       body: Container(
@@ -55,7 +55,7 @@ class _DashboardState extends State<Dashboard> {
                       child: Container(
                         margin: EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                            color: colors['secondary'],
+                            color: AppColors.primaryColor.shade900,
                             borderRadius: BorderRadius.circular(15)),
                         child: Center(
                             child: Column(
@@ -70,7 +70,7 @@ class _DashboardState extends State<Dashboard> {
                       child: Container(
                         margin: EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                            color: colors['secondary'],
+                            color: AppColors.primaryColor.shade900,
                             borderRadius: BorderRadius.circular(15)),
                         child:
                             Center(child: Text('Outgoing transaction amount:')),
@@ -80,7 +80,7 @@ class _DashboardState extends State<Dashboard> {
                       child: Container(
                         margin: EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                            color: colors['secondary'],
+                            color: AppColors.primaryColor.shade900,
                             borderRadius: BorderRadius.circular(15)),
                         child:
                             Center(child: Text('Incoming transaction amount:')),
@@ -90,7 +90,7 @@ class _DashboardState extends State<Dashboard> {
                       child: Container(
                         margin: EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                            color: colors['secondary'],
+                            color: AppColors.primaryColor.shade900,
                             borderRadius: BorderRadius.circular(15)),
                         child: Center(child: Text('No of Users:')),
                       ),

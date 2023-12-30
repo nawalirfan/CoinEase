@@ -13,7 +13,7 @@ class EnterAmount extends StatelessWidget {
     TextEditingController amount = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colors['primary'],
+        backgroundColor: AppColors.primaryColor,
         title: const Text('Send Money'),
       ),
       body: Container(
@@ -53,7 +53,7 @@ class EnterAmount extends StatelessWidget {
                                 user: user)));
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: colors['primary'],
+                      backgroundColor: AppColors.primaryColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       )),

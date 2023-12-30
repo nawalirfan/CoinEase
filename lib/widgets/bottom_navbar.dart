@@ -12,9 +12,9 @@ class BNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: index,
-      backgroundColor: colors['secondary'],
-      selectedItemColor: colors['primary'],
-      unselectedItemColor: const Color.fromARGB(255, 105, 104, 105),
+      backgroundColor: AppColors.primaryColor.shade900,
+      selectedItemColor: AppColors.primaryColor,
+      unselectedItemColor: Color.fromARGB(255, 134, 134, 134),
       items: [
         const BottomNavigationBarItem(
           icon: Icon(Icons.help_center),
@@ -23,8 +23,6 @@ class BNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: GestureDetector(
             onTap: () {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => const HomePage()));
               Navigator.pushNamed(context, '/HomePage');
             },
             child: const Icon(Icons.home),

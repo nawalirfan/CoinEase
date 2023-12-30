@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coin_ease/bloc/HomePage_bloc/homePage_repo.dart';
-import 'package:coin_ease/bloc/HomePage_bloc/home_page_event.dart';
-import 'package:coin_ease/bloc/HomePage_bloc/home_page_state.dart';
+import 'package:coin_ease/bloc/homepage_bloc/homePage_repo.dart';
+import 'package:coin_ease/bloc/homepage_bloc/home_page_event.dart';
+import 'package:coin_ease/bloc/homepage_bloc/home_page_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage_Bloc extends Bloc<HomePageEvent, HomePage_state> {

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/models/account_model.dart';
 import 'package:coin_ease/models/user_model.dart';
-import 'package:coin_ease/screens/auth/Forget_password.dart';
 
 class UserService {
   final userCollection = FirebaseFirestore.instance.collection('users');
@@ -39,8 +38,7 @@ class UserService {
                 isActive: accountData['isActive']));
 
         // Listen for real-time updates
-        userReference.snapshots().listen((event) {
-          // Update the user object with the latest data
+        userReference.snapshots().listen((event) {          
           print('type of id: ${event.id.runtimeType}');
           UserModel updatedUser = UserModel(
             id: event.id,
@@ -53,8 +51,7 @@ class UserService {
             role: event['role'],
             account: UserAccount.fromJson(event['account']),
           );
-
-          // TODO: Update your UI or state with the updated user data
+          
           print('User data updated in real-time: ${updatedUser.toString()}');
         });
 
@@ -132,8 +129,7 @@ class UserService {
         );
 
         // Listen for real-time updates
-        documentReference.snapshots().listen((event) {
-          // Update the user object with the latest data
+        documentReference.snapshots().listen((event) {          
           UserModel updatedUser = UserModel(
             id: event.id,
             phoneNumber: event['phoneNumber'],
@@ -145,8 +141,7 @@ class UserService {
             role: event['role'],
             account: UserAccount.fromJson(event['account']),
           );
-
-          // TODO: Update your UI or state with the updated user data
+          
           print('User data updated in real-time: $updatedUser');
         });
 

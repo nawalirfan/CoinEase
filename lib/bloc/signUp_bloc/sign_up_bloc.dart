@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:coin_ease/bloc/signUp_bloc/sign_up_event.dart';
-import 'package:coin_ease/bloc/signUp_bloc/sign_up_state.dart';
+import 'package:coin_ease/bloc/signup_bloc/sign_up_event.dart';
+import 'package:coin_ease/bloc/signup_bloc/sign_up_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

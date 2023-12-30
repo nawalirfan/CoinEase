@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class PasswordResetForm extends StatefulWidget {
   final Function(String, String) forgetPasswordFunction;
+  final bool cnicError;
 
-  PasswordResetForm({required this.forgetPasswordFunction, Key? key})
-      : super(key: key);
+  const PasswordResetForm(
+      {required this.forgetPasswordFunction,
+      required this.cnicError,
+      super.key});
 
   @override
   _PasswordResetFormState createState() => _PasswordResetFormState();
@@ -16,6 +19,7 @@ class _PasswordResetFormState extends State<PasswordResetForm> {
   TextEditingController cpasswordController = TextEditingController();
   bool errors = false;
   bool passError = false;
+  bool cnicError = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +58,7 @@ class _PasswordResetFormState extends State<PasswordResetForm> {
                       fillColor: Colors.white,
                       errorText: errors && cnicController.text.isEmpty
                           ? 'CNIC number is required'
-                          : errors
+                          : cnicError
                               ? 'Invalid CNIC number'
                               : null,
                       border: OutlineInputBorder(
@@ -124,7 +128,7 @@ class _PasswordResetFormState extends State<PasswordResetForm> {
                       errorText: errors && cpasswordController.text.isEmpty
                           ? 'Confirm Password is required'
                           : passError
-                              ? 'Confirm Passwords don\'t match'
+                              ? 'Passwords don\'t match'
                               : null,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -141,12 +145,11 @@ class _PasswordResetFormState extends State<PasswordResetForm> {
                     child: ElevatedButton(
                       onPressed: () async {
                         setState(() {
-                          passError =
-                              passwordController.text != cpasswordController.text;
+                          passError = passwordController.text !=
+                              cpasswordController.text;
                         });
 
                         if (!passError) {
-                          print(cnicController.text);
                           if (cnicController.text.isEmpty) {
                             setState(() {
                               errors = true;
@@ -154,8 +157,15 @@ class _PasswordResetFormState extends State<PasswordResetForm> {
                           } else {
                             widget.forgetPasswordFunction(
                                 cnicController.text, passwordController.text);
+                            if (widget.cnicError) {
+                              setState(() {
+                                errors = true;
+                                cnicError = true;
+                              });
+                            }
+                            print('eror:$errors $cnicError');
+
                             if (errors) {
-                              // Show error below the CNIC TextField
                               setState(() {
                                 errors = true;
                               });
@@ -164,7 +174,8 @@ class _PasswordResetFormState extends State<PasswordResetForm> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 47, 156, 138),
+                        backgroundColor:
+                            const Color.fromARGB(255, 47, 156, 138),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
