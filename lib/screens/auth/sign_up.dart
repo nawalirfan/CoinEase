@@ -213,6 +213,8 @@ class _SignUpDetailsState extends State<SignUpDetails> {
                           ),
                           const SizedBox(height: 5),
                           TextField(
+                            
+                            obscureText: true,
                             controller: cPasswordController,
                             decoration: InputDecoration(
                                 filled: true,

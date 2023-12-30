@@ -5,11 +5,17 @@ import 'package:coin_ease/services/auth_service.dart';
 import 'package:coin_ease/services/transaction_service.dart';
 import 'package:flutter/material.dart';
 
-class ConfirmPayment extends StatelessWidget {
+class ConfirmPayment extends StatefulWidget {
   final UserModel user;
   final double amount;
   const ConfirmPayment({super.key, required this.amount, required this.user});
 
+  @override
+  State<ConfirmPayment> createState() => _ConfirmPaymentState();
+}
+
+class _ConfirmPaymentState extends State<ConfirmPayment> {
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,18 +42,18 @@ class ConfirmPayment extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 Text(
-                  'Amount: $amount',
+                  'Amount: ${widget.amount}',
                   style: const TextStyle(
                       fontSize: 22, fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Account Title: ${user.account?.title}',
+                  'Account Title: ${widget.user.account?.title}',
                   style: const TextStyle(fontSize: 18),
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Account Number: ${user.account?.accountNumber}',
+                  'Account Number: ${widget.user.account?.accountNumber}',
                   style: const TextStyle(fontSize: 18),
                 ),
               ],
@@ -59,11 +65,17 @@ class ConfirmPayment extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
                 onPressed: () async {
+                  setState(() {
+                    loading = true;
+                  });
                   AuthService auth = AuthService();
                   UserModel? sender = await auth.getLoggedInUser();
                   TransactionService transactionService = TransactionService();
                   bool created = await transactionService.createTransaction(
-                      sender, user, amount);
+                      sender, widget.user, widget.amount);
+                  setState(() {
+                    loading = false;
+                  });
 
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -80,7 +92,11 @@ class ConfirmPayment extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     )),
-                child: const Text('Confirm')),
+                child: loading
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : const Text('Confirm')),
           ),
         ],
       ),
