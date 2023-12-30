@@ -1,18 +1,16 @@
-import 'package:coin_ease/test_widgets/signUp/signUpForm.dart';
+import 'package:coin_ease/widgets/signUpForm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-
 void main() {
-  testWidgets('Verify UI elements and error message', (WidgetTester tester) async {
-  
+  testWidgets('Verify UI elements and error message',
+      (WidgetTester tester) async {
     final nameController = TextEditingController();
     final cnicController = TextEditingController();
     final dateController = TextEditingController();
     final mNameController = TextEditingController();
     final passwordController = TextEditingController();
     final cPasswordController = TextEditingController();
-
 
     final errors = true;
     final passError = true;

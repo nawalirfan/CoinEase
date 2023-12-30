@@ -235,7 +235,7 @@ class _AccountDetailState extends State<AccountDetail> {
                 color: Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 190, 189, 189),
                 ),
               ),
               child: Column(

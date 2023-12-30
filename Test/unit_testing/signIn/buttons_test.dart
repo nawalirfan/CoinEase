@@ -1,5 +1,5 @@
 import 'package:coin_ease/screens/auth/phone_verification.dart';
-import 'package:coin_ease/test_widgets/signIn/buttons.dart';
+import 'package:coin_ease/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

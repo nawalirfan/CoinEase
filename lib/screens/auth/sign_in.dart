@@ -3,7 +3,7 @@ import 'package:coin_ease/bloc/signin_bloc/sign_in_event.dart';
 import 'package:coin_ease/bloc/signin_bloc/sign_in_state.dart';
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/services/auth_service.dart';
-import 'package:coin_ease/test_widgets/signIn/buttons.dart';
+import 'package:coin_ease/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

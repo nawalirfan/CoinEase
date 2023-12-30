@@ -1,5 +1,6 @@
 import 'package:coin_ease/screens/Send/select_user.dart';
 import 'package:coin_ease/screens/request/select_user.dart';
+import 'package:coin_ease/screens/request/viewRequests.dart';
 import 'package:flutter/material.dart';
 import 'package:coin_ease/colors.dart';
 
@@ -25,7 +26,7 @@ class ActionButtonsRow extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const RequestMoney()),
+              MaterialPageRoute(builder: (context) => const Requests()),
             );
           },
           icon: Icons.arrow_downward,

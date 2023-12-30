@@ -1,4 +1,4 @@
-import 'package:coin_ease/test_widgets/signUp/signUpForm.dart';
+import 'package:coin_ease/widgets/signUpForm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coin_ease/bloc/signup_bloc/sign_up_bloc.dart';

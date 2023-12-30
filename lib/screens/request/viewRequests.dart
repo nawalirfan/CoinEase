@@ -7,6 +7,7 @@ import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/request_model.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/request/request_detail.dart';
+import 'package:coin_ease/screens/request/select_user.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:coin_ease/services/request_service.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +59,19 @@ class _RequestsState extends State<Requests> {
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
         title: const Text('Requests'),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const RequestMoney()),
+              );
+            },
+            child: const Row(
+              children: [Text('Send '), Icon(Icons.add), SizedBox(width: 10)],
+            ),
+          )
+        ],
       ),
       body: _buildBody(),
     );
