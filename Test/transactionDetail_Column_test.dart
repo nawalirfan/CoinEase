@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/models/account_model.dart';
 import 'package:coin_ease/models/transaction_model.dart';
-import 'package:coin_ease/test_widgets/transactionDetail_Column.dart';
+import 'package:coin_ease/test_widgets/transactionDetail/transactionDetail_Column.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

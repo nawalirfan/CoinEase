@@ -43,7 +43,7 @@ class TransactionDetailColumn extends StatelessWidget {
             width: 90,
           ),
           Text(
-            ' Rs. ${transaction.isDebit ? '-' : '+'} ${transaction.amount.toStringAsFixed(2)}',
+            ' Rs. ${transaction.isDebit ? '-' : '+'} ${transaction.amount.toStringAsFixed(3)} PKR',
             style: const TextStyle(
               color: Colors.black,
               fontSize: 40,

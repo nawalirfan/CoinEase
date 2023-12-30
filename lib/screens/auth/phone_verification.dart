@@ -2,7 +2,7 @@
 
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/screens/auth/otp_pin.dart';
-import 'package:coin_ease/test_widgets/phone_verification_TextFields.dart';
+import 'package:coin_ease/test_widgets/PhoneVerification/phone_verification_TextFields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';

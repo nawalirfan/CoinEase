@@ -3,7 +3,7 @@ import 'package:coin_ease/bloc/transactions/transaction_state.dart';
 import 'package:coin_ease/models/transaction_model.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/transaction_detail.dart';
-import 'package:coin_ease/test_widgets/transactionList_Tile.dart';
+import 'package:coin_ease/test_widgets/transactionList/transactionList_Tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:coin_ease/screens/Send/select_user.dart';
 import 'package:coin_ease/screens/request/select_user.dart';
-import 'package:coin_ease/test_widgets/actionButtonRow_homePage.dart';
+import 'package:coin_ease/test_widgets/HomePage/actionButtonRow_homePage.dart';
 
 void main() {
   testWidgets('ActionButtonsRow renders correctly',

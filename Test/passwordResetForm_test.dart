@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:coin_ease/test_widgets/passwordResetForm.dart';
+import 'package:coin_ease/test_widgets/forget_Password/passwordResetForm.dart';
 
 void main() {
   testWidgets('Valid Input Test', (WidgetTester tester) async {

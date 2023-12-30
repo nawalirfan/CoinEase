@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:coin_ease/test_widgets/passwordResetForm.dart';
+import 'package:coin_ease/test_widgets/forget_Password/passwordResetForm.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coin_ease/screens/auth/sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';

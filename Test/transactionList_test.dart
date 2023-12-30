@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/models/transaction_model.dart';
-import 'package:coin_ease/test_widgets/transactionList_Tile.dart';
+import 'package:coin_ease/test_widgets/transactionList/transactionList_Tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
