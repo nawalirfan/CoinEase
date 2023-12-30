@@ -24,11 +24,17 @@ class _RequestsState extends State<Requests> {
   AuthService auth = AuthService();
   RequestService req = RequestService();
   UserModel? user;
+  bool loading = false;
   List<RequestModel>? reqList = [];
   Future<void> _initializeData() async {
+    setState(() {
+      loading = true;
+    });
     user = await auth.getLoggedInUser();
     reqList = await req.getRequests(user);
-    setState(() {});
+    setState(() {
+      loading = false;
+    });
     print(reqList.toString());
   }
 

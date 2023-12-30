@@ -9,7 +9,7 @@ import 'package:coin_ease/models/account_model.dart';
 import 'package:coin_ease/models/transaction_model.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/account_details.dart';
-import 'package:coin_ease/screens/Send/select_user.dart';
+import 'package:coin_ease/screens/send/select_user.dart';
 import 'package:coin_ease/screens/request/select_user.dart';
 import 'package:coin_ease/screens/transaction_history.dart';
 import 'package:coin_ease/services/user_service.dart';

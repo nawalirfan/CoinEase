@@ -1,5 +1,5 @@
 import 'package:coin_ease/models/user_model.dart';
-import 'package:coin_ease/screens/Send/enter_amount.dart';
+import 'package:coin_ease/screens/send/enter_amount.dart';
 import 'package:coin_ease/screens/request/EnterAmount.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +38,8 @@ class UserList extends StatelessWidget {
               ),
             ),
           );
-        } else {
-          return Container();
+        } else {          
+          return const Text('No users found');
         }
       },
     );

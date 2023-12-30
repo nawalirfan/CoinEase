@@ -1,7 +1,7 @@
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/request_model.dart';
 import 'package:coin_ease/models/user_model.dart';
-import 'package:coin_ease/screens/Send/enter_amount.dart';
+import 'package:coin_ease/screens/send/enter_amount.dart';
 import 'package:coin_ease/screens/home_page.dart';
 import 'package:coin_ease/services/request_service.dart';
 import 'package:coin_ease/services/user_service.dart';

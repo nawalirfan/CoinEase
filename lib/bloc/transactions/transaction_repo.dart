@@ -15,11 +15,4 @@ class Transaction_Repository {
     await service.createTransaction(sender, receiver, amount);
   }
 
-  Future<void> deleteRecord(DocumentReference reference) async {
-    try {
-      await reference.delete();
-    } catch (e) {
-      throw Exception("Error deleting record: $e");
-    }
-  }
 }

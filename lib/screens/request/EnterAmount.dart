@@ -1,6 +1,6 @@
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/user_model.dart';
-import 'package:coin_ease/screens/Send/confirm.dart';
+import 'package:coin_ease/screens/send/confirm.dart';
 import 'package:coin_ease/screens/home_page.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:coin_ease/services/request_service.dart';
