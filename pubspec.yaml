@@ -46,11 +46,12 @@ dependencies:
   equatable: ^2.0.5
   bloc: ^8.1.2
   fl_chart: ^0.61.0
+  bloc_test: ^9.1.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  cloud_firestore: ^4.0.0 
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -68,7 +68,8 @@ class _AccountDetailState extends State<AccountDetail> {
   }
 
   Widget buildListView(List<DocumentSnapshot> account) {
-    return Column(
+    return Column
+    (
       children: [
         const SizedBox(height: 30),
         Container(
@@ -77,8 +78,9 @@ class _AccountDetailState extends State<AccountDetail> {
           margin: const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: colors['secondary']),
+            borderRadius: BorderRadius.circular(20),
+            color: colors['secondary'],
+          ),
           child: Column(
             children: [
               const SizedBox(height: 10),
@@ -98,7 +100,9 @@ class _AccountDetailState extends State<AccountDetail> {
                             ? '################'
                             : widget.account?.cardNo ?? '',
                         style: TextStyle(
-                            fontSize: obscureText ? 23 : 25, letterSpacing: 2),
+                          fontSize: obscureText ? 23 : 25,
+                          letterSpacing: 2,
+                        ),
                       ),
                     ),
                   ),
@@ -157,12 +161,16 @@ class _AccountDetailState extends State<AccountDetail> {
                         Text(
                           'Lock Card',
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w500),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                         Text(
                           'Lock this card temporarily',
                           style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.w300),
+                            fontSize: 17,
+                            fontWeight: FontWeight.w300,
+                          ),
                         )
                       ],
                     )
@@ -171,65 +179,88 @@ class _AccountDetailState extends State<AccountDetail> {
               ],
             ),
             Switch(
-                activeColor: colors['primary'],
-                value: isSwitched,
-                onChanged: (value) {
-                  setState(() {
-                    isSwitched = value;
-                  });
-                })
+              activeColor: colors['primary'],
+              value: isSwitched,
+              onChanged: (value) {
+                setState(() {
+                  isSwitched = value;
+                });
+              },
+            ),
           ],
         ),
-        Container(
-          margin: const EdgeInsets.all(35),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              border:
-                  Border.all(color: const Color.fromARGB(255, 190, 189, 189))),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'My CoinEase Account Number',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+        Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(35),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: const Color.fromARGB(255, 190, 189, 189),
+                ),
               ),
-              const SizedBox(height: 8),
-              Text(
-                widget.account?.accountNumber ?? '',
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'My CoinEase Account Number',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    isSwitched
+                        ? '############'
+                        : widget.account?.accountNumber ?? '',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 35),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: const Color.fromARGB(255, 190, 189, 189),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'My CoinEase IBAN Number',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    isSwitched
+                        ? '########################'
+                        : widget.account?.iban ?? '',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 35),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              border:
-                  Border.all(color: const Color.fromARGB(255, 190, 189, 189))),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'My CoinEase IBAN Number',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                widget.account?.iban ?? '',
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              ),
-            ],
-          ),
-        )
       ],
     );
   }

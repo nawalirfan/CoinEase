@@ -1,14 +1,14 @@
 import 'package:bloc/bloc.dart';
-import 'package:coin_ease/bloc/transactions/repo.dart';
+import 'package:coin_ease/bloc/transactions/transaction_repo.dart';
 import 'package:coin_ease/bloc/transactions/transaction_event.dart';
 import 'package:coin_ease/bloc/transactions/transaction_state.dart';
 import 'package:coin_ease/models/transaction_model.dart';
 import 'package:flutter/foundation.dart';
 
 class TransactionBloc extends Bloc<TransactionEvent, Transaction_State> {
-  final Transaction_Repository _repository = Transaction_Repository();
+  final Transaction_Repository _repository ;
 
-  TransactionBloc() : super(LoadingTransactionState()) {
+  TransactionBloc(this._repository) : super(LoadingTransactionState()) {
     on<LoadTransactionEvent>((event, emit) async {
       emit(LoadingTransactionState());
       try {

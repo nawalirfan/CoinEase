@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class AccountDetail_Repository {
+class HomePage_Repository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<List<DocumentSnapshot>> getList() async {
@@ -9,15 +9,8 @@ class AccountDetail_Repository {
       print(snapshot);
       return snapshot.docs;
     } catch (e) {
-      throw Exception("Error fetching list: $e");
+      throw Exception("Error fetching Data: $e");
     }
   }
 
-  Future<void> deleteRecord(DocumentReference reference) async {
-    try {
-      await reference.delete();
-    } catch (e) {
-      throw Exception("Error deleting record: $e");
-    }
-  }
 }

@@ -38,8 +38,7 @@ class UserList extends StatelessWidget {
               ),
             ),
           );
-        } else {
-          // Handle the case where users is null or index is out of bounds
+        } else {          
           return const Text('No users found');
         }
       },

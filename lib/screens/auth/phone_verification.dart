@@ -2,6 +2,7 @@
 
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/screens/auth/otp_pin.dart';
+import 'package:coin_ease/test_widgets/PhoneVerification/phone_verification_TextFields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -15,7 +16,8 @@ class PhoneVerification extends StatefulWidget
   State<PhoneVerification> createState() => _PhoneVerificationState();
 }
 
-class _PhoneVerificationState extends State<PhoneVerification> {
+class _PhoneVerificationState extends State<PhoneVerification> 
+{
   TextEditingController countrycode = TextEditingController();
   var phone = "";
 
@@ -28,18 +30,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/verification.jpg',
-                width: 250,
-                height: 250,
-              ),
-              const Text(
-                'Phone Verification',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              const Text('Register your phone before getting started!',
-                  style: TextStyle(fontSize: 16)),
+              PhoneVerificationWidget(),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
@@ -73,6 +64,9 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                       },
                       codeAutoRetrievalTimeout: (String verificationId) {},
                     );
+                   
+                                    
+                    //Navigator.pushNamed(context, '/OtpPin');       
                     Navigator.push(
                       context,
                       MaterialPageRoute(

@@ -52,11 +52,13 @@ class _SignInPageState extends State<SignInPage> {
             loading = false;
           });
           if (state.isAdmin) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Dashboard()));
+            // Navigator.push(context,
+            //     MaterialPageRoute(builder: (context) => const Dashboard()));
+             Navigator.pushNamed(context, '/Dashboard');
           } else {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const HomePage()));
+            // Navigator.push(context,
+            //     MaterialPageRoute(builder: (context) => const HomePage()));
+            Navigator.pushNamed(context, '/HomePage');
           }
         } else if (state is SignInFailure) {
           setState(() {
@@ -68,7 +70,8 @@ class _SignInPageState extends State<SignInPage> {
       },
       child: Scaffold(
         body: Center(
-          child: ListView(
+          child: ListView
+          (
             shrinkWrap: true,
             children: [
               Column(
@@ -162,6 +165,7 @@ class _SignInPageState extends State<SignInPage> {
                                       builder: (context) =>
                                           const PhoneVerification()),
                                 );
+                            
                               },
                               child: Text(
                                 'Sign Up',
@@ -183,6 +187,7 @@ class _SignInPageState extends State<SignInPage> {
                                   builder: (context) =>
                                       const ForgetPassword()),
                             );
+                             //Navigator.pushNamed(context, '/ForgetPassword');
                           },
                           child: Text(
                             'Forgot Password?',

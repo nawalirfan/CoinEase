@@ -1,3 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coin_ease/bloc/ViewRequest_bloc/viewRequest_repo.dart';
+import 'package:coin_ease/bloc/ViewRequest_bloc/viewRequest_bloc.dart';
+import 'package:coin_ease/bloc/ViewRequest_bloc/viewRequest_event.dart';
+import 'package:coin_ease/bloc/ViewRequest_bloc/viewRequest_state.dart';
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/request_model.dart';
 import 'package:coin_ease/models/user_model.dart';
@@ -5,6 +10,7 @@ import 'package:coin_ease/screens/request/request_detail.dart';
 import 'package:coin_ease/services/auth_service.dart';
 import 'package:coin_ease/services/request_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Requests extends StatefulWidget {
   const Requests({super.key});
@@ -14,6 +20,7 @@ class Requests extends StatefulWidget {
 }
 
 class _RequestsState extends State<Requests> {
+  final RequestsBloc _ListBloc = RequestsBloc();
   AuthService auth = AuthService();
   RequestService req = RequestService();
   UserModel? user;
@@ -31,32 +38,42 @@ class _RequestsState extends State<Requests> {
     print(reqList.toString());
   }
 
-  @override
+   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () {
+    _loadData();
+    RequestsRepository().getList();
+     Future.delayed(Duration.zero, () {
       _initializeData();
     });
   }
 
-  @override
+  Future<void> _loadData() async {
+    _ListBloc.add(LoadRequestsEvent());
+  }
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colors['primary'],
         title: const Text('Requests'),
       ),
-      body: reqList!.isEmpty
-          ? loading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : const Center(
-                  child: Text(
-                    'No requests found',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                )
+      body: _buildBody(),
+    );
+  }
+
+   Widget _buildBody() {
+    return BlocBuilder<RequestsBloc, RequestState>(
+      bloc: _ListBloc,
+      builder: (context, state) {
+        if (state is RequestLoadingState) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is RequestLoadedState) {
+          return reqList!.isEmpty
+          ? const Center(
+              //child: CircularProgressIndicator()
+              child: Text('No Requests Found'),
+            )
           : ListView.builder(
               shrinkWrap: true,
               itemCount: reqList?.length,
@@ -94,14 +111,24 @@ class _RequestsState extends State<Requests> {
                       trailing: Text(
                         ' Rs. ${request.amount}',
                         style: const TextStyle(
-                            color: const Color.fromARGB(255, 9, 129, 79),
+                            color:   Color.fromARGB(255, 9, 129, 79),
                             fontSize: 15,
                             fontWeight: FontWeight.w500),
                       ),
                     ),
                   ),
                 );
-              }),
+              
+              });
+        } else if (state is RequestErrorState) {
+          return Center(
+            child: Text(state.error),
+          );
+        } else {
+          return const Center(child: Text('Unknown state'));
+        }
+      },
     );
   }
+
 }

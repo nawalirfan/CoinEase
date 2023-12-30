@@ -8,14 +8,17 @@ import 'package:flutter/material.dart';
 class ConfirmPayment extends StatefulWidget {
   final UserModel user;
   final double amount;
-  const ConfirmPayment({super.key, required this.amount, required this.user});
+
+  const ConfirmPayment({Key? key, required this.amount, required this.user})
+      : super(key: key);
 
   @override
   State<ConfirmPayment> createState() => _ConfirmPaymentState();
 }
 
 class _ConfirmPaymentState extends State<ConfirmPayment> {
-  bool loading = false;
+  String errorMessage = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,14 +29,27 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          if (errorMessage.isNotEmpty)
+            Container(
+              padding: const EdgeInsets.all(10),
+              color: Colors.red, // Customize the color as needed
+              child: Text(
+                errorMessage,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
             padding: const EdgeInsets.all(20),
             height: 200,
             width: 400,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: colors['secondary']),
+              borderRadius: BorderRadius.circular(15),
+              color: colors['secondary'],
+            ),
             child: Column(
               children: [
                 const Text(
@@ -42,9 +58,11 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
                 ),
                 const SizedBox(height: 30),
                 Text(
-                  'Amount: ${widget.amount}',
+                  'Amount: ${widget.amount} PKR',
                   style: const TextStyle(
-                      fontSize: 22, fontWeight: FontWeight.w500),
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Text(
@@ -64,39 +82,36 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
             padding: const EdgeInsets.only(left: 40, right: 40),
             width: double.infinity,
             child: ElevatedButton(
-                onPressed: () async {
-                  setState(() {
-                    loading = true;
-                  });
-                  AuthService auth = AuthService();
-                  UserModel? sender = await auth.getLoggedInUser();
-                  TransactionService transactionService = TransactionService();
-                  bool created = await transactionService.createTransaction(
-                      sender, widget.user, widget.amount);
-                  setState(() {
-                    loading = false;
-                  });
+              onPressed: () async {
+                AuthService auth = AuthService();
+                UserModel? sender = await auth.getLoggedInUser();
+                TransactionService transactionService = TransactionService();
+                bool created = await transactionService.createTransaction(
+                  sender,
+                  widget.user,
+                  widget.amount,
+                );
 
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(created
-                          ? 'Transaction successful!'
-                          : 'You don\'t have enough money for this transaction'),
-                    ),
-                  );
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: colors['primary'],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    )),
-                child: loading
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : const Text('Confirm')),
+                if (!created) {
+                  setState(() {
+                    errorMessage = 'Transaction failed: Not enough funds.';
+                  });
+                } else {
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => HomePage()),
+                  // );
+                  Navigator.pushNamed(context, '/HomePage');
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: colors['primary'],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              child: const Text('Confirm'),
+            ),
           ),
         ],
       ),
