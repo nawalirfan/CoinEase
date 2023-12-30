@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coin_ease/bloc/ViewRequest_bloc/viewRequest_repo.dart';
 import 'package:coin_ease/bloc/ViewRequest_bloc/viewRequest_bloc.dart';
 import 'package:coin_ease/bloc/ViewRequest_bloc/viewRequest_event.dart';
@@ -86,7 +85,6 @@ class _RequestsState extends State<Requests> {
         } else if (state is RequestLoadedState) {
           return reqList!.isEmpty
               ? const Center(
-                  //child: CircularProgressIndicator()
                   child: Text('No Requests Found'),
                 )
               : ListView.builder(
