@@ -44,7 +44,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
             padding: const EdgeInsets.all(20),
-            height: 200,
+            height: 300,
             width: 400,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
@@ -97,14 +97,15 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
                     errorMessage = 'Transaction failed: Not enough funds.';
                   });
                 } else {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => HomePage()),
-                  // );
-                  Navigator.pushNamed(context, '/HomePage');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
                 }
               },
               style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric( vertical: 15), // Adjust the vertical padding
+                minimumSize: Size(double.infinity, 50),
                 backgroundColor: colors['primary'],
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),

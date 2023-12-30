@@ -94,6 +94,8 @@ class _RequestMoneyState extends State<RequestMoney> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric( vertical: 15), // Adjust the vertical padding
+                    minimumSize: Size(double.infinity, 50),
                     backgroundColor: colors['primary'],
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),

@@ -1,16 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:coin_ease/colors.dart';
 import 'package:coin_ease/models/user_model.dart';
 import 'package:coin_ease/screens/Send/confirm.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class EnterAmount extends StatelessWidget {
+class EnterAmount extends StatefulWidget {
   final UserModel user;
-  const EnterAmount({super.key, required this.user});
+
+  const EnterAmount({Key? key, required this.user}) : super(key: key);
+
+  @override
+  _EnterAmountState createState() => _EnterAmountState();
+}
+
+class _EnterAmountState extends State<EnterAmount> {
+  TextEditingController amount = TextEditingController();
+  bool showError = false;
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController amount = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colors['primary'],
@@ -33,31 +41,46 @@ class EnterAmount extends StatelessWidget {
                 FilteringTextInputFormatter.digitsOnly,
               ],
               decoration: InputDecoration(
-                  filled: true,
-                  contentPadding: const EdgeInsets.only(left: 15),
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  )),
+                filled: true,
+                contentPadding: const EdgeInsets.only(left: 15),
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                errorText: showError ? 'Please enter the amount' : null,
+              ),
             ),
             const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {
+                onPressed: () {
+                  setState(() {
+                    showError = amount.text.isEmpty;
+                  });
+
+                  if (!showError) {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ConfirmPayment(
-                                amount: double.parse(amount.text),
-                                user: user)));
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: colors['primary'],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      )),
-                  child: const Text('Continue')),
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ConfirmPayment(
+                          amount: double.parse(amount.text),
+                          user: widget.user,
+                        ),
+                      ),
+                    );
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  minimumSize: Size(double.infinity, 50),
+                  backgroundColor: colors['primary'],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                child: const Text('Continue'),
+              ),
             ),
           ],
         ),

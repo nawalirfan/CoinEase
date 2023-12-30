@@ -19,7 +19,7 @@ class UserInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 320,
-      height: 200.0,
+      height: 216.0,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),

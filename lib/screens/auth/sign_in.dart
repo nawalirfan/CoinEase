@@ -7,6 +7,7 @@ import 'package:coin_ease/screens/auth/Forget_password.dart';
 import 'package:coin_ease/screens/home_page.dart';
 import 'package:coin_ease/screens/auth/phone_verification.dart';
 import 'package:coin_ease/services/auth_service.dart';
+import 'package:coin_ease/test_widgets/signIn/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -144,60 +145,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                   const SizedBox(height: 20.0),
-                  Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 20.0),
-                        child: Text(
-                          "Don't have an account?",
-                          style: TextStyle(
-                              fontSize: 17,
-                              color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
-                      ),
-                      loading
-                          ? const CircularProgressIndicator()
-                          : TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PhoneVerification()),
-                                );
-                            
-                              },
-                              child: Text(
-                                'Sign Up',
-                                style: TextStyle(
-                                    fontSize: 17, color: colors['primary']),
-                              ),
-                            ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ForgetPassword()),
-                            );
-                             //Navigator.pushNamed(context, '/ForgetPassword');
-                          },
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                                fontSize: 17, color: colors['primary']),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  AuthLinksRow()
                 ],
               ),
             ],
