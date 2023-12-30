@@ -102,7 +102,8 @@ class _HomePageState extends State<HomePage> {
                                 );
                                 //Navigator.push(context, '/AccountDetail' as Route<Object?>);
                               },
-                              child: UserInfoWidget( //widget
+                              child: UserInfoWidget(
+                                //widget
                                 userName: loggedInUser?.name,
                                 userAccount: loggedInUserAccount,
                                 obscureText: obscureText,
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         const SizedBox(height: 30),
-                        ActionButtonsRow(),  //widget
+                        ActionButtonsRow(), //widget
                         const SizedBox(height: 30),
                         Column(
                           children: [

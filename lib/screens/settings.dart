@@ -69,14 +69,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           ],
         ),
-      ),
-    
-  
-      
-      
-   
-         
-          
+      ),   
       bottomNavigationBar: BNavBar(index: 2, user: widget.user),
     );
   }

@@ -68,7 +68,8 @@ class _AccountDetailState extends State<AccountDetail> {
   }
 
   Widget buildListView(List<DocumentSnapshot> account) {
-    return Column(
+    return Column
+    (
       children: [
         const SizedBox(height: 30),
         Container(
