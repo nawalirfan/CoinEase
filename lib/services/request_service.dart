@@ -40,6 +40,7 @@ class RequestService {
 
         print('Requests updated in real-time: $updatedRequests');
       });
+      print(requests.toString());
 
       return requests;
     } catch (e) {
@@ -58,7 +59,7 @@ class RequestService {
 
       // receiver's acc
       DocumentReference toRef =
-          _firestore.collection('users').doc(requestTo.id);      
+          _firestore.collection('users').doc(requestTo.id);
 
       CollectionReference toRequestRef = toRef.collection('requests');
 
@@ -78,7 +79,7 @@ class RequestService {
   }
 
   Future<bool> deleteRequest(String requestId, String reqTo) async {
-    try {      
+    try {
       DocumentReference userRef = _firestore.collection('users').doc(reqTo);
       CollectionReference requestsRef = userRef.collection('requests');
 

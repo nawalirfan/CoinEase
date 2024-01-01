@@ -1,5 +1,4 @@
 import 'package:coin_ease/screens/Send/select_user.dart';
-import 'package:coin_ease/screens/request/select_user.dart';
 import 'package:coin_ease/screens/request/viewRequests.dart';
 import 'package:flutter/material.dart';
 import 'package:coin_ease/colors.dart';
